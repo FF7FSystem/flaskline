@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from termcolor import colored
 from flask import render_template, flash, redirect, url_for, request
-from app import app
-from app.forms import LoginForm
+from app import app, db
+from app.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
 from werkzeug.urls import url_parse
@@ -56,3 +56,21 @@ def logout():
     print(colored('Запущена функция logout','cyan', attrs=['bold']))
     logout_user()
     return redirect(url_for('index'))
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    print(colored('Загружается страница Register','cyan', attrs=['bold']))
+    if current_user.is_authenticated:
+        print(colored('Если пользователь уже вошел в систему его кинет на страницу Idex','cyan', attrs=['bold']))
+        return redirect(url_for('index'))
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user) # Добавление в таблицу данных пользователь-мыло-пароль
+        db.session.commit() # Сохранение данных в таблице
+        print(colored('считывание полей из формы прошли успешно и записаны в таблицу User','cyan', attrs=['bold']))
+        flash('Поздравяем вы зарегались...Вас кинет на  строницу Логин ?')
+        return redirect(url_for('login'))
+    print(colored('Введеные данные в форму Регистрации не валидны, кидаем опять на страницу register.html','cyan', attrs=['bold']))
+    return render_template('register.html', title='Register', form=form)
