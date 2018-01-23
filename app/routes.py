@@ -11,7 +11,7 @@ from werkzeug.urls import url_parse
 @app.route('/index')
 @login_required
 def index():
-    print(colored('Загружается страница Index','cyan', attrs=['bold']))
+    print(colored('Загружается страница Index','yellow', attrs=['bold']))
     posts = [
         {   'author': {'username': 'Евгений'}, 'body': 'Beautiful day in Port!'},
         {   'author': {'username': 'Стас'},    'body': 'The Avengers movie was!'}, 
@@ -21,31 +21,31 @@ def index():
 
 @app.route('/index2')
 def index2(): #название функции любое, оно нужно чтобы декоратор роутерс  стройкой вышерендрил именно эту функцию)
-    print(colored('Загружается страница Index2','cyan', attrs=['bold']))
+    print(colored('Загружается страница Index2','yellow', attrs=['bold']))
     return render_template('index2.html', user="Юзерок-фраерок")
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    print(colored('Загружается страница Login','cyan', attrs=['bold']))
-    print(colored('Переменная - current_user равна = ','cyan', attrs=['bold']), current_user)
+    print(colored('Загружается страница Login','yellow', attrs=['bold']))
+    print(colored('Переменная - current_user равна = ','yellow', attrs=['bold']), current_user)
 
 
     if current_user.is_authenticated: # проверка, может пользователь уже авторизирован
-        print(colored('Юзер уже авторизирован как - ','cyan', attrs=['bold']),current_user)
+        print(colored('Юзер уже авторизирован как - ','yellow', attrs=['bold']),current_user)
         return redirect(url_for('index'))
 
     form = LoginForm()
-    print(colored('в переменной form - ','cyan', attrs=['bold']),form)
+    print(colored('в переменной form - ','yellow', attrs=['bold']),form)
     if form.validate_on_submit():
-        print(colored('Валидация полей логин-пароль пройдена','cyan', attrs=['bold']))
+        print(colored('Валидация полей логин-пароль пройдена','yellow', attrs=['bold']))
         user = User.query.filter_by(username=form.username.data).first()
-        print(colored('В переменной user  - ','cyan', attrs=['bold']), user)
+        print(colored('В переменной user  - ','yellow', attrs=['bold']), user)
         if user is None or not user.check_password(form.password.data):
             flash('НЕверный логин или пароль')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
-        print(colored('В переменной next_page','cyan', attrs=['bold']),next_page)
+        print(colored('В переменной next_page','yellow', attrs=['bold']),next_page)
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
         return redirect(next_page)
@@ -53,15 +53,15 @@ def login():
 
 @app.route('/logout')
 def logout():
-    print(colored('Запущена функция logout','cyan', attrs=['bold']))
+    print(colored('Запущена функция logout','yellow', attrs=['bold']))
     logout_user()
     return redirect(url_for('index'))
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    print(colored('Загружается страница Register','cyan', attrs=['bold']))
+    print(colored('Загружается страница Register','yellow', attrs=['bold']))
     if current_user.is_authenticated:
-        print(colored('Если пользователь уже вошел в систему его кинет на страницу Idex','cyan', attrs=['bold']))
+        print(colored('Если пользователь уже вошел в систему его кинет на страницу Idex','yellow', attrs=['bold']))
         return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
@@ -69,8 +69,22 @@ def register():
         user.set_password(form.password.data)
         db.session.add(user) # Добавление в таблицу данных пользователь-мыло-пароль
         db.session.commit() # Сохранение данных в таблице
-        print(colored('считывание полей из формы прошли успешно и записаны в таблицу User','cyan', attrs=['bold']))
+        print(colored('считывание полей из формы прошли успешно и записаны в таблицу User','yellow', attrs=['bold']))
         flash('Поздравяем вы зарегались...Вас кинет на  строницу Логин ?')
         return redirect(url_for('login'))
-    print(colored('Введеные данные в форму Регистрации не валидны, кидаем опять на страницу register.html','cyan', attrs=['bold']))
+    print(colored('Введеные данные в форму Регистрации не валидны, кидаем опять на страницу register.html','yellow', attrs=['bold']))
     return render_template('register.html', title='Register', form=form)
+
+@app.route('/user/<username>')
+@login_required
+def user(username):
+    print(colored('Загружается страница User (просмотр профиля)','yellow', attrs=['bold']))
+    user = User.query.filter_by(username=username).first_or_404()
+    #в таблице User ищется зерегистрированый юзер  (глупость полная, мы же зарегались)
+    # но ссылка динамичная потом видимо в ЮЗЕРНЕЙ будет передавться другие имена  для просмотра чужих станиц
+    posts = [
+        {'author': user, 'body': 'Test post #1'},
+        {'author': user, 'body': 'Test post #2'},
+            ]
+    return render_template('user.html', user=user, posts=posts)
+    #Открывается страница пользователя который вошел в систему потому что его данные передаются на входную функцию в ХТМЛ форме
