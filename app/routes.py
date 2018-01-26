@@ -6,6 +6,8 @@ from app.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
 from werkzeug.urls import url_parse
+from datetime import datetime
+from app.forms import EditProfileForm
 
 @app.route('/')
 @app.route('/index')
@@ -80,11 +82,37 @@ def register():
 def user(username):
     print(colored('Загружается страница User (просмотр профиля)','yellow', attrs=['bold']))
     user = User.query.filter_by(username=username).first_or_404()
+    print(colored('В переменной User (просмотр профиля)','red', attrs=['bold']), user)
     #в таблице User ищется зерегистрированый юзер  (глупость полная, мы же зарегались)
     # но ссылка динамичная потом видимо в ЮЗЕРНЕЙ будет передавться другие имена  для просмотра чужих станиц
     posts = [
         {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'},
+        {'author': user, 'body': 'Test post #2'}
             ]
     return render_template('user.html', user=user, posts=posts)
     #Открывается страница пользователя который вошел в систему потому что его данные передаются на входную функцию в ХТМЛ форме
+
+@app.before_request
+def before_request():
+    print(colored('Запускается функция before_request','yellow', attrs=['bold']))
+    if current_user.is_authenticated:
+        current_user.last_seen = datetime.utcnow()
+        db.session.commit()
+
+
+@app.route('/edit_profile', methods=['GET', 'POST'])
+@login_required
+def edit_profile():
+    print(colored('Запускается функция edit_profile','yellow', attrs=['bold']))
+    form = EditProfileForm()
+    if form.validate_on_submit():
+        current_user.username = form.username.data
+        current_user.about_me = form.about_me.data
+        db.session.commit()
+        flash('Изменения профайла были  сохранены')
+        return redirect(url_for('edit_profile'))
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.about_me.data = current_user.about_me
+    return render_template('edit_profile.html', title='Edit Profile',
+                           form=form)

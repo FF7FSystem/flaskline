@@ -6,6 +6,7 @@ from flask_login import UserMixin
 from hashlib import md5
 
 
+
 @login.user_loader
 def load_user(id):
 	print(colored('Запустилась функция load_user','green', attrs=['bold']))
@@ -48,4 +49,5 @@ class Post(db.Model):
 
 	def __repr__(self):
 		return '<Post {}>'.format(self.body)
+
 
