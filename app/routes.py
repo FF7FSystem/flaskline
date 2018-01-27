@@ -2,12 +2,11 @@
 from termcolor import colored
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from app.forms import LoginForm, RegistrationForm
-from flask_login import current_user, login_user, logout_user, login_required
+from app.forms import LoginForm, RegistrationForm, EditProfileForm
 from app.models import User
 from werkzeug.urls import url_parse
 from datetime import datetime
-from app.forms import EditProfileForm
+from flask_login import current_user, login_user, logout_user, login_required
 
 @app.route('/')
 @app.route('/index')
@@ -82,7 +81,7 @@ def register():
 def user(username):
     print(colored('Загружается страница User (просмотр профиля)','yellow', attrs=['bold']))
     user = User.query.filter_by(username=username).first_or_404()
-    print(colored('В переменной User (просмотр профиля)','red', attrs=['bold']), user)
+    print(colored('В переменной User (просмотр профиля)','yellow', attrs=['bold']), user)
     #в таблице User ищется зерегистрированый юзер  (глупость полная, мы же зарегались)
     # но ссылка динамичная потом видимо в ЮЗЕРНЕЙ будет передавться другие имена  для просмотра чужих станиц
     posts = [
