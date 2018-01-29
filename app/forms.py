@@ -38,3 +38,13 @@ class EditProfileForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     about_me = TextAreaField('About me', validators=[Length(min=0, max=140)])
     submit = SubmitField('Submit')
+
+    def __init__(self, original_username, *args, **kwargs): #ДАнный конструктор говорит что класс EditProfileForm не только наследуется от FlaskForm
+        super(EditProfileForm, self).__init__(*args, **kwargs) # он так же наследует от себя новый метод так что при вызове self.original_username
+        self.original_username = original_username # будет выводится original_username которое передавалось в данный класс 
+                                        #например  form = EditProfileForm(current_user.username)  будет выдавать имя  вошедшего в систему пользователя  
+    def validate_username(self, username): 
+        if username.data != self.original_username: #Проверка что введеное в форму имя не равно тому пользователю который вошл в систему ( меняет совй ник на текущий = не меняет)
+            user = User.query.filter_by(username=self.username.data).first() # поиск введеного в  форму имени в базе данных
+            if user is not None: # если мы пытаемся изменить имя пользователя на такое как есть в базе данных то....
+                raise ValidationError('Please use a different username.')
