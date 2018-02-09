@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h3>Hi, {{ user }} авторизированный  как {{ current_user.username }}.</h3>
+          
+    <table border="1">
+    	<caption>Таблица "USER" </caption>
+        {% for col in table %}    
+           <tr>
+            	{% for row in col %} 
+                <td>{{ row }} </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+   
+    
+{% endblock %}  
+ 

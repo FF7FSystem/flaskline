@@ -115,3 +115,12 @@ def edit_profile():
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
+
+@app.route('/table')
+def table(): #
+    print(colored('Загружается страница table','yellow', attrs=['bold']))
+    table=[[ getattr(i,j) for j in ['id','username','email']] for i in User.query.all()]
+    
+
+    return render_template( 'table.html', user="Юзерок-фраерок",title='Таблица',
+        table=table)
