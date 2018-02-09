@@ -119,8 +119,9 @@ def edit_profile():
 @app.route('/table')
 def table(): #
     print(colored('Загружается страница table','yellow', attrs=['bold']))
-    table=[[ getattr(i,j) for j in ['id','username','email']] for i in User.query.all()]
-    
+    table=[[ getattr(i,j) for j in User.for_table()['public']] for i in User.query.all()]
+    for_thead=User.for_table()['public']
+    service_tab=User.for_table()['service']
 
     return render_template( 'table.html', user="Юзерок-фраерок",title='Таблица',
-        table=table)
+        table=table,for_thead=for_thead,service_tab=service_tab)

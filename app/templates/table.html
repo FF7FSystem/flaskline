@@ -4,15 +4,28 @@
     <h3>Hi, {{ user }} авторизированный  как {{ current_user.username }}.</h3>
           
     <table border="1">
+    <thead>
+    	<tr> 
+            {% for row in for_thead %} 
+             	<td><b>{{ row }}</b>  </td>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
     	<caption>Таблица "USER" </caption>
         {% for col in table %}    
            <tr>
             	{% for row in col %} 
-                <td>{{ row }} </td>
+                	<td>{{ row }} </td>
                 {% endfor %}
             </tr>
         {% endfor %}
+    </tbody>
     </table>
+	<h4>Дополнительные "сервисные" поля которые имеет таблица:  </h4>
+    {% for row in service_tab %} 
+        <p> {{ row }} </p>
+    {% endfor %}
    
     
 {% endblock %}  
