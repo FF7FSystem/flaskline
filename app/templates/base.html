@@ -3,8 +3,9 @@
       {% if title %}
       <title>{{ title }} - Microblog</title>
       {% else %}
-      <title>А Титл кто в рендринг функцию передаст, дедпихто?</title>
+      <title>А Титл не передан буде этот</title>
       {% endif %}
+    <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon"> <!-- вставляю картинку в титл-->
     </head>
     <body>
         <div>
@@ -18,7 +19,8 @@
                 <a href="{{ url_for('logout') }}">Logout page</a>
                 <a href="{{ url_for('user', username=current_user.username) }}">Профайл Тебя</a>            
             {% endif %}
-            <a href="{{ url_for('table') }}">Таблицы</a></p>
+            <a href="{{ url_for('table') }}">Таблицы</a>
+            <p><a href="{{ url_for('upload') }}">Загрузка файлов</a></p>
             
         </div>
         <hr>

@@ -1,15 +1,4 @@
-2018-01-29 12:44:14,451 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:35]
-2018-01-29 12:44:58,230 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:35]
-2018-01-29 12:46:52,827 ERROR: Exception on /edit_profile [POST] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.IntegrityError: UNIQUE constraint failed: user.username
-
-The above exception was the direct cause of the following exception:
-
+2018-03-01 21:05:43,125 ERROR: Exception on /upload [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -23,69 +12,37 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/ff7f/Desktop/microblog/app/routes.py", line 110, in edit_profile
-    db.session.commit()
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/orm/scoping.py", line 153, in do
-    return getattr(self.registry(), name)(*args, **kwargs)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/orm/session.py", line 937, in commit
-    self.transaction.commit()
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/orm/session.py", line 461, in commit
-    self._prepare_impl()
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/orm/session.py", line 441, in _prepare_impl
-    self.session.flush()
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/orm/session.py", line 2237, in flush
-    self._flush(objects)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/orm/session.py", line 2363, in _flush
-    transaction.rollback(_capture_exception=True)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
-    compat.reraise(exc_type, exc_value, exc_tb)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
-    raise value
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/orm/session.py", line 2327, in _flush
-    flush_context.execute()
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/orm/unitofwork.py", line 391, in execute
-    rec.execute(self)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/orm/unitofwork.py", line 556, in execute
-    uow
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/orm/persistence.py", line 177, in save_obj
-    mapper, table, update)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/orm/persistence.py", line 768, in _emit_update_statements
-    execute(statement, multiparams)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 948, in execute
-    return meth(self, multiparams, params)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
-    context)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
-    exc_info
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+  File "/home/ff7f/Desktop/microblog/app/routes.py", line 170, in upload
+    return render_template('upload.html', title='Upload',form=form)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username [SQL: 'UPDATE user SET username=?, about_me=? WHERE user.id = ?'] [parameters: ('Stas', 'Медве́жьи (лат. Ursidae) — семейство млекопитающих отряда хищных.  Медведи всеядны, хорошо лазают и плавают.', 1)] (Background on this error at: http://sqlalche.me/e/gkpj)
-2018-01-29 13:33:00,672 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:35]
-2018-02-04 21:37:15,681 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:35]
-2018-02-04 21:45:11,448 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:35]
-2018-02-04 21:45:40,604 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:35]
-2018-02-06 22:22:41,208 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:35]
-2018-02-06 22:24:56,010 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:35]
-2018-02-06 22:25:21,545 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:35]
-2018-02-06 22:35:23,092 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:35]
-2018-02-06 22:36:51,497 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:35]
-2018-02-06 22:42:08,123 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:35]
-2018-02-06 22:44:07,834 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:35]
-2018-02-06 22:45:46,430 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:35]
-2018-02-06 22:53:11,006 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:35]
-2018-02-06 22:53:15,593 ERROR: Exception on /table [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
+  File "/home/ff7f/Desktop/microblog/app/templates/upload.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 36, in top-level template code
+    {% block content %}{% endblock %}
+  File "/home/ff7f/Desktop/microblog/app/templates/upload.html", line 29, in block "content"
+    <div><a title='Download button' href={{ url_for('uploads/Alien.gif') }}>Ссылка на гифку? (наведи курсор)</a></div>
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/helpers.py", line 333, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1805, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/helpers.py", line 323, in url_for
+    force_external=external)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'uploads/Alien.gif'. Did you mean 'upload' instead?
+2018-03-01 21:06:20,138 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 21:06:20,883 ERROR: Exception on /upload [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -99,11 +56,33 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/ff7f/Desktop/microblog/app/routes.py", line 124, in table
-    table=[getattr(table_user,col) for col in table_col]
-  File "/home/ff7f/Desktop/microblog/app/routes.py", line 124, in <listcomp>
-    table=[getattr(table_user,col) for col in table_col]
-AttributeError: 'list' object has no attribute 'id'
-2018-02-06 22:55:07,829 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:35]
-2018-02-06 22:55:37,432 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:35]
-2018-02-06 22:57:36,825 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:35]
+  File "/home/ff7f/Desktop/microblog/app/routes.py", line 170, in upload
+    return render_template('upload.html', title='Upload',form=form)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ff7f/Desktop/microblog/app/templates/upload.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 36, in top-level template code
+    {% block content %}{% endblock %}
+  File "/home/ff7f/Desktop/microblog/app/templates/upload.html", line 29, in block "content"
+    <div><a title='Download button' href={{ url_for('uploads/') }}Alien.gif>Ссылка на гифку? (наведи курсор)</a></div>
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/helpers.py", line 333, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1805, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/helpers.py", line 323, in url_for
+    force_external=external)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'uploads/'. Did you mean 'upload' instead?
+2018-03-01 21:06:47,355 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]

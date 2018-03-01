@@ -1,15 +1,17 @@
 from termcolor import colored
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, RadioField, SelectField
+from flask_wtf.file import FileField,FileRequired, FileAllowed
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length
 from app.models import User
 
 class LoginForm(FlaskForm):
     print(colored('Создается класс Login','blue', attrs=['bold']))
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    remember_me = BooleanField('Remember Me')
-    submit = SubmitField('Sign In')
+    username = StringField('Имя пользователя', validators=[DataRequired()])
+    password = PasswordField('Пароль', validators=[DataRequired()])
+    remember_me = BooleanField('Запомнить меня на всегда )')
+    submit = SubmitField('Вход')
+
 
 class RegistrationForm(FlaskForm):
 	#Форма Регистрации пользователей
@@ -48,3 +50,25 @@ class EditProfileForm(FlaskForm):
             user = User.query.filter_by(username=self.username.data).first() # поиск введеного в  форму имени в базе данных
             if user is not None: # если мы пытаемся изменить имя пользователя на такое как есть в базе данных то....
                 raise ValidationError('Please use a different username.')
+
+class Manyforms(FlaskForm):
+    print(colored('Создается класс Manyforms','blue', attrs=['bold']))
+    tablename = StringField('Сюда вводить текст', validators=[DataRequired()])
+    Radio_choose = RadioField('Выбрать Таблицу', choices = 
+        [('User', 'table User'),('Post', 'table Post'),('Empty','No table')])
+    Listfield = SelectField('Список, выбрать тут:',choices = 
+        [('none',''),('aria', 'Aria'), ('kipelov', 'Kipelov'), ('epidemia','Epidemia'),('master','Master')])
+    Tafform = TextAreaField('Поле ввода текста ', validators=[Length(min=0, max=25),DataRequired()])
+    Cheboxfield1 = BooleanField('чекбокс1', default=False)
+    Cheboxfield2 = BooleanField('чекбокс2', default=False)
+    Cheboxfield3 = BooleanField('чекбокс3', default=False)
+    submit = SubmitField('Enter ')
+
+class UploadForm(FlaskForm):
+    print(colored('Создается класс UploadForm','blue', attrs=['bold']))
+    fupload = FileField('Загрузка Файлов', validators=[
+    FileRequired(),FileAllowed(['jpg','gif','ico'], 'онли jpg, gif,ico!')]) 
+    #Проверка что форма не пустая, проверка расширения файла (из списка)
+    submit = SubmitField('Загрузить ')
+    
+    

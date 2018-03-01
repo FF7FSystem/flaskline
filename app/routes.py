@@ -2,11 +2,13 @@
 from termcolor import colored
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm
+from app.forms import LoginForm, RegistrationForm, EditProfileForm ,Manyforms, UploadForm
 from app.models import User
 from werkzeug.urls import url_parse
 from datetime import datetime
 from flask_login import current_user, login_user, logout_user, login_required
+import os
+from werkzeug.utils import secure_filename
 
 @app.route('/')
 @app.route('/index')
@@ -20,10 +22,34 @@ def index():
             ]
     return render_template('index.html', title='Homer', posts=posts)
 
-@app.route('/index2')
+@app.route('/index2',  methods=['GET', 'POST'])
 def index2(): #название функции любое, оно нужно чтобы декоратор роутерс  стройкой вышерендрил именно эту функцию)
     print(colored('Загружается страница Index2','yellow', attrs=['bold']))
-    return render_template('index2.html', user="Юзерок-фраерок")
+    form= Manyforms()
+    if form.validate_on_submit():
+        value=form.tablename.data
+        value2=form.Radio_choose.data
+        value3=form.Listfield.data
+        value4=form.Tafform.data
+       
+    else:
+        value,value2,value3,value4='none','none','none','none'
+    
+    value5=form.Cheboxfield1.data
+    value6=form.Cheboxfield2.data
+    value7=form.Cheboxfield3.data
+    #далее считывание со страницы и обработка  форм
+    checkbox_list=['number1','number2','number3'] #для динамического создания чекбоксов по кол-ву элементов
+    if request.method == 'POST':
+        for checkbox_value in request.form: #создает список всех форм которые применены на странице
+        #в список попадают формы которые были применены ( Например если чекбокс не нажат или в текстовое поле 
+        # не введена инфа то  данная форма в список не попадет как будто ее нет на странице)
+            temp=checkbox_value + '---->' +(request.form[checkbox_value])
+            #выше строка выдует значение "value" формы, которая задействована на странице, соответств есть в списке)
+            print(temp)
+
+    return render_template('index2.html', user="Юзерок-фраерок",form=form, value=value,value2=value2,
+        value3=value3,value4=value4,value5=value5,value6=value6,value7=value7,checkbox_list=checkbox_list)    
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -113,15 +139,32 @@ def edit_profile():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
-    return render_template('edit_profile.html', title='Edit Profile',
-                           form=form)
+    return render_template('edit_profile.html', title='Edit Profile', form=form)
 
 @app.route('/table')
 def table(): #
     print(colored('Загружается страница table','yellow', attrs=['bold']))
-    table=[[ getattr(i,j) for j in User.for_table()['public']] for i in User.query.all()]
-    for_thead=User.for_table()['public']
-    service_tab=User.for_table()['service']
+    inf_for_table=User.for_table()
+    table=[[ getattr(i,j) for j in inf_for_table['public']] for i in User.query.all()]
+    for_thead=inf_for_table['public']
+    service_tab=inf_for_table['service']
 
     return render_template( 'table.html', user="Юзерок-фраерок",title='Таблица',
         table=table,for_thead=for_thead,service_tab=service_tab)
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+    print(colored('Запускается функция upload','yellow', attrs=['bold']))
+    form = UploadForm()
+    if form.validate_on_submit():
+        if request.method == 'POST':
+            file = form.fupload.data #присваеваем переменной содержимое файла кажись
+            '''Если размер загружаемого файла больше чем задано в конфиге в переменной 'MAX_CONTENT_LENGTH'
+            Приложение выдает ошибку 413. Можно сделать сравнение типа:       
+            if len(file.read())<="число меньше чем в 'MAX_CONTENT_LENGTH" тогда отрабатывать, если нет , то писать уведомление пользователю о привышении.''' 
+            filename = file.filename #изымаем имя файла из формы
+            filename = secure_filename(filename) #если имя файла некорекное (спец символы) сохраняет без спец символов
+            print(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                
+    return render_template('upload.html', title='Upload/Download',form=form)
