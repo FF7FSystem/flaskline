@@ -168,3 +168,9 @@ def upload():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 
     return render_template('upload.html', title='Upload/Download',form=form)
+
+
+@app.route('/forcss')
+def for_css():
+    print(colored('Загружается страница forcss','yellow', attrs=['bold']))
+    return render_template('forcss.html', title='CSS exp')

@@ -14,7 +14,7 @@
             {% endfor %}
         </p>
      <p>
-        {{ form.Radio_choose.label }}
+        {{ form.Radio_choose.label }} <br> Формируется через Фласк как обчный список  с  радиобатонами в каждой строке 
         {{ form.Radio_choose }}
         {% for error in form.Radio_choose.errors %}
             <span style="color: green;">[{{ error }} ]</span>
