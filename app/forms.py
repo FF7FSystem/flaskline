@@ -71,4 +71,7 @@ class UploadForm(FlaskForm):
     #Проверка что форма не пустая, проверка расширения файла (из списка)
     submit = SubmitField('Загрузить ')
     
+class PostForm(FlaskForm):
+    post = TextAreaField('Написанное пером не вырубить и топором, дерзай...', validators=[DataRequired(), Length(min=1, max=140)])
+    submit = SubmitField('Опубликовать сие писание!')
     

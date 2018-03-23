@@ -1,4 +1,4 @@
-2018-02-27 21:13:17,750 ERROR: Exception on /upload [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
+2018-03-01 21:06:49,000 ERROR: Exception on /upload [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,21 +12,46 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/ff7f/Desktop/microblog/app/routes.py", line 158, in upload
-    if form.validate_on_submit():
-UnboundLocalError: local variable 'form' referenced before assignment
-2018-02-27 21:14:22,298 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-02-27 21:25:27,923 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-02-27 21:25:41,614 ERROR: Exception on /upload [POST] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_uploads.py", line 327, in config
-    return current_app.upload_set_config[self.name]
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/werkzeug/local.py", line 347, in __getattr__
-    return getattr(self._get_current_object(), name)
-AttributeError: 'Flask' object has no attribute 'upload_set_config'
-
-During handling of the above exception, another exception occurred:
-
+  File "/home/ff7f/Desktop/microblog/app/routes.py", line 170, in upload
+    return render_template('upload.html', title='Upload',form=form)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ff7f/Desktop/microblog/app/templates/upload.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 36, in top-level template code
+    {% block content %}{% endblock %}
+  File "/home/ff7f/Desktop/microblog/app/templates/upload.html", line 29, in block "content"
+    <div><a title='Download button' href={{ url_for('uploads') }} Alien.gif>Ссылка на гифку? (наведи курсор)</a></div>
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/helpers.py", line 333, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1805, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/helpers.py", line 323, in url_for
+    force_external=external)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'uploads'. Did you mean 'upload' instead?
+2018-03-01 21:06:58,277 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 21:08:26,602 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 21:22:19,087 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 21:22:47,673 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 21:23:19,544 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 21:24:12,453 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 21:24:37,061 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 21:24:50,263 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 21:25:38,352 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 21:58:47,188 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 21:58:51,779 ERROR: Exception on /upload [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -40,52 +65,35 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/ff7f/Desktop/microblog/app/routes.py", line 159, in upload
-    if form.validate_on_submit():
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_wtf/form.py", line 101, in validate_on_submit
-    return self.is_submitted() and self.validate()
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/wtforms/form.py", line 310, in validate
-    return super(Form, self).validate(extra)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/wtforms/form.py", line 152, in validate
-    if not field.validate(self, extra):
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/wtforms/fields/core.py", line 204, in validate
-    stop_validation = self._run_validation_chain(form, chain)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/wtforms/fields/core.py", line 224, in _run_validation_chain
-    validator(form, self)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_wtf/file.py", line 89, in __call__
-    if not self.upload_set.file_allowed(field.data, filename):
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_uploads.py", line 370, in file_allowed
-    return self.extension_allowed(extension(basename))
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_uploads.py", line 380, in extension_allowed
-    return ((ext in self.config.allow) or
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_uploads.py", line 329, in config
-    raise RuntimeError("cannot access configuration outside request")
-RuntimeError: cannot access configuration outside request
-2018-02-27 21:27:44,181 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-02-27 21:29:59,301 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-02-27 21:31:45,428 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-02-27 21:34:38,797 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-02-27 21:36:47,602 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-02-27 21:37:27,884 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-02-27 21:37:52,513 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-02-27 21:39:03,960 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-02-27 21:43:40,497 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-02-27 21:44:11,157 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-02-27 21:44:39,246 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-02-27 21:48:48,225 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-02-27 21:49:09,535 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-02-27 21:49:12,627 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-02-27 21:51:01,723 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-02-27 21:53:38,875 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 20:49:38,321 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 20:51:32,168 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 20:54:06,327 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 20:58:24,859 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 20:59:24,839 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 20:59:40,264 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 21:00:10,368 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 21:01:45,719 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 21:02:43,787 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 21:04:24,088 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 21:04:37,401 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 21:05:41,367 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+  File "/home/ff7f/Desktop/microblog/app/routes.py", line 170, in upload
+    return render_template('upload.html', title='Upload',form=form)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ff7f/Desktop/microblog/app/templates/upload.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 36, in top-level template code
+    {% block content %}{% endblock %}
+  File "/home/ff7f/Desktop/microblog/app/templates/upload.html", line 29, in block "content"
+    <div><a title='link for static file' download href=""{{ url_for("uploads", filename="Help.ico") }}"">Ссылка на гифку? (наведи курсор)</a></div>
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/helpers.py", line 333, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1805, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/helpers.py", line 323, in url_for
+    force_external=external)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'uploads' with values ['filename']. Did you mean 'upload' instead?
+2018-03-01 21:59:10,004 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 22:02:08,929 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 22:03:36,295 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]

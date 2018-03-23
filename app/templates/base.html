@@ -18,7 +18,7 @@
                 <p><a href="{{ url_for('login') }}">Login page</a></p>
             {% else %}
                 <a href="{{ url_for('logout') }}">Logout page</a>
-                <a href="{{ url_for('user', username=current_user.username) }}">Профайл Тебя</a>            
+                <a href="{{ url_for('user', username=current_user.username) }}">Профайл Тебя</a>  <!-- В урл передается динамический компонент юзернейм который в функции юзер проверяет есть ли данный залогиненый пользователь в базах и т.д.-->          
             {% endif %}
             <a href="{{ url_for('table') }}">Таблицы</a>
             <p><a href="{{ url_for('upload') }}">Загрузка файлов</a></p>

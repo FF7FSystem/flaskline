@@ -1,4 +1,4 @@
-2018-03-01 22:03:37,096 ERROR: Exception on /upload [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
+2018-03-02 22:08:28,507 ERROR: Exception on /forcss [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,89 +12,106 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/ff7f/Desktop/microblog/app/routes.py", line 170, in upload
-    return render_template('upload.html', title='Upload',form=form)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
-    context, ctx.app)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
-    rv = template.render(context)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
+  File "/home/ff7f/Desktop/microblog/app/routes.py", line 176, in for_css
+    return render_template('forcss.html', title='CSS exp')
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 133, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/ff7f/Desktop/microblog/app/templates/upload.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 36, in top-level template code
-    {% block content %}{% endblock %}
-  File "/home/ff7f/Desktop/microblog/app/templates/upload.html", line 29, in block "content"
-    <div><a  href="{{ url_for("static/download", filename="Help.ico") }}">Ссылка на гифку? (наведи курсор)</a></div>
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/helpers.py", line 333, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1805, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/helpers.py", line 323, in url_for
-    force_external=external)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'static/download' with values ['filename']. Did you mean 'static' instead?
-2018-03-01 22:03:50,725 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 22:03:51,045 ERROR: Exception on /upload [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/ff7f/Desktop/microblog/app/routes.py", line 170, in upload
-    return render_template('upload.html', title='Upload',form=form)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
-    context, ctx.app)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
-    rv = template.render(context)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/home/ff7f/Desktop/microblog/app/templates/upload.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 36, in top-level template code
-    {% block content %}{% endblock %}
-  File "/home/ff7f/Desktop/microblog/app/templates/upload.html", line 29, in block "content"
-    <div><a  href="{{ url_for("static/Download", filename="Help.ico") }}">Ссылка на гифку? (наведи курсор)</a></div>
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/helpers.py", line 333, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1805, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/helpers.py", line 323, in url_for
-    force_external=external)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'static/Download' with values ['filename']. Did you mean 'static' instead?
-2018-03-01 22:04:12,177 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 22:06:32,226 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 22:08:15,229 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 22:08:33,947 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 22:09:07,710 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 22:10:29,433 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 22:13:11,034 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 22:13:36,520 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 22:14:10,958 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 22:14:23,735 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 22:14:45,625 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 22:16:11,435 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-02 21:21:40,994 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+  File "/home/ff7f/Desktop/microblog/app/templates/forcss.html", line 8, in template
+    <a href="{{ url_for('index') }}">Вернуться на Home page</a> <br>
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 901, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 875, in subparse
+    add_data(self.parse_tuple(with_condexpr=True))
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 620, in parse_tuple
+    args.append(parse())
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 432, in parse_expression
+    return self.parse_condexpr()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 437, in parse_condexpr
+    expr1 = self.parse_or()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 450, in parse_or
+    left = self.parse_and()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 459, in parse_and
+    left = self.parse_not()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 470, in parse_not
+    return self.parse_compare()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 474, in parse_compare
+    expr = self.parse_math1()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 496, in parse_math1
+    left = self.parse_concat()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 507, in parse_concat
+    args = [self.parse_math2()]
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 517, in parse_math2
+    left = self.parse_pow()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 528, in parse_pow
+    left = self.parse_unary()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 547, in parse_unary
+    node = self.parse_postfix(node)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 676, in parse_postfix
+    node = self.parse_call(node)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 767, in parse_call
+    self.stream.expect('comma')
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/lexer.py", line 384, in expect
+    self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: expected token ',', got 'index'
+2018-03-02 22:10:25,329 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 22:15:20,171 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 22:28:10,743 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 22:29:05,935 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 22:33:22,456 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 22:40:06,709 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 22:40:35,644 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 22:41:12,526 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 22:41:33,742 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 22:46:34,704 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 22:47:26,250 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 22:49:27,107 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 22:51:01,864 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-04 21:29:35,033 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-04 21:30:43,733 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-04 21:31:06,299 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-04 21:31:26,933 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-04 21:32:49,575 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-04 21:34:36,942 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-04 21:39:36,012 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-04 21:40:22,087 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-04 21:40:30,197 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-04 21:40:40,993 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-04 21:40:57,226 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-04 21:41:08,213 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-04 21:41:18,105 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-04 21:49:04,109 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-04 22:01:56,167 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-04 22:09:37,684 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-04 22:10:02,407 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-04 22:12:22,093 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-04 22:12:45,535 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-04 22:13:14,181 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-06 21:30:45,400 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-06 21:35:15,935 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-06 21:39:28,608 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-06 21:40:39,489 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-06 21:42:03,423 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-06 21:43:01,579 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-06 21:46:46,667 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-06 22:00:56,251 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-06 22:10:25,013 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-06 22:24:12,059 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-06 22:24:54,079 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-07 21:42:07,521 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-07 21:42:57,213 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]

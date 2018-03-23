@@ -1,4 +1,4 @@
-2018-03-01 21:06:49,000 ERROR: Exception on /upload [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
+2018-03-02 21:21:48,631 ERROR: Exception on /login [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,8 +12,8 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/ff7f/Desktop/microblog/app/routes.py", line 170, in upload
-    return render_template('upload.html', title='Upload',form=form)
+  File "/home/ff7f/Desktop/microblog/app/routes.py", line 79, in login
+    return render_template('login.html', title='Логырование', form=form)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
     context, ctx.app)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
@@ -24,12 +24,10 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/ff7f/Desktop/microblog/app/templates/upload.html", line 1, in top-level template code
+  File "/home/ff7f/Desktop/microblog/app/templates/login.html", line 1, in top-level template code
     {% extends "base.html" %}
-  File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 36, in top-level template code
-    {% block content %}{% endblock %}
-  File "/home/ff7f/Desktop/microblog/app/templates/upload.html", line 29, in block "content"
-    <div><a title='Download button' href={{ url_for('uploads') }} Alien.gif>Ссылка на гифку? (наведи курсор)</a></div>
+  File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 24, in top-level template code
+    <a href="{{ url_for('forcss') }}">"CSS experience"</a>
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/helpers.py", line 333, in url_for
     return appctx.app.handle_url_build_error(error, endpoint, values)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1805, in handle_url_build_error
@@ -40,18 +38,27 @@ Traceback (most recent call last):
     force_external=external)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/werkzeug/routing.py", line 1776, in build
     raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'uploads'. Did you mean 'upload' instead?
-2018-03-01 21:06:58,277 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 21:08:26,602 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 21:22:19,087 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 21:22:47,673 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 21:23:19,544 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 21:24:12,453 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 21:24:37,061 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 21:24:50,263 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 21:25:38,352 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 21:58:47,188 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 21:58:51,779 ERROR: Exception on /upload [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
+werkzeug.routing.BuildError: Could not build url for endpoint 'forcss'. Did you mean 'for_css' instead?
+2018-03-02 21:22:29,060 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:36:02,646 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:37:24,035 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:37:45,572 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:38:42,419 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:39:43,208 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:42:36,781 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:42:59,851 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:43:36,214 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:43:58,186 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:44:08,228 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:46:31,052 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:49:14,426 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:49:36,068 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:51:15,473 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:51:33,946 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:52:00,560 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:53:34,668 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:54:42,575 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:54:44,030 ERROR: Exception on /forcss [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -65,8 +72,8 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/ff7f/Desktop/microblog/app/routes.py", line 170, in upload
-    return render_template('upload.html', title='Upload',form=form)
+  File "/home/ff7f/Desktop/microblog/app/routes.py", line 176, in for_css
+    return render_template('forcss.html', title='CSS exp')
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
     context, ctx.app)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
@@ -77,12 +84,8 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/ff7f/Desktop/microblog/app/templates/upload.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 36, in top-level template code
-    {% block content %}{% endblock %}
-  File "/home/ff7f/Desktop/microblog/app/templates/upload.html", line 29, in block "content"
-    <div><a title='link for static file' download href=""{{ url_for("uploads", filename="Help.ico") }}"">Ссылка на гифку? (наведи курсор)</a></div>
+  File "/home/ff7f/Desktop/microblog/app/templates/forcss.html", line 8, in top-level template code
+    <a href="{{ url_for('forcss') }}">Обновить  ЭТУ страницу</a>
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/helpers.py", line 333, in url_for
     return appctx.app.handle_url_build_error(error, endpoint, values)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1805, in handle_url_build_error
@@ -93,7 +96,18 @@ Traceback (most recent call last):
     force_external=external)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/werkzeug/routing.py", line 1776, in build
     raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'uploads' with values ['filename']. Did you mean 'upload' instead?
-2018-03-01 21:59:10,004 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 22:02:08,929 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 22:03:36,295 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+werkzeug.routing.BuildError: Could not build url for endpoint 'forcss'. Did you mean 'for_css' instead?
+2018-03-02 21:54:54,345 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:56:48,202 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:56:59,242 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:57:11,772 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:58:44,448 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 22:00:49,922 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 22:02:52,097 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 22:03:31,294 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 22:04:09,178 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 22:05:28,981 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 22:05:48,640 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 22:06:02,853 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 22:07:12,556 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 22:08:25,750 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]

@@ -2,25 +2,38 @@
 from termcolor import colored
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm ,Manyforms, UploadForm
-from app.models import User
+from app.forms import LoginForm, RegistrationForm, EditProfileForm ,Manyforms, UploadForm, PostForm #Импортирование форм
+from app.models import User, Post #импортирование таблиц
 from werkzeug.urls import url_parse
 from datetime import datetime
 from flask_login import current_user, login_user, logout_user, login_required
 import os
 from werkzeug.utils import secure_filename
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
     print(colored('Загружается страница Index','yellow', attrs=['bold']))
-    posts = [
-        {   'author': {'username': 'Евгений'}, 'body': 'Beautiful day in Port!'},
-        {   'author': {'username': 'Стас'},    'body': 'The Avengers movie was!'}, 
-        {   'author': {'username': 'Дмитрий'}, 'body': 'Какая гадость эта ваша заливная ыба!!'}
-            ]
-    return render_template('index.html', title='Homer', posts=posts)
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(body=form.post.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Райз май сан (или о чудо пост опубликовался)')
+        return redirect(url_for('index'))
+
+    page = request.args.get('page', 1, type=int) # считывает с  адресной строки значение page=
+    posts = Post.query.order_by(Post.timestamp.desc()).paginate(page, app.config['POST_PER_PAGE'], False)
+    # posts делает запрос в базу с учетом пагинации и числа считаного с адресной строки
+    if posts.has_next: #Тру если  в нашей поагинации есть следующая страница
+        next_url = url_for('index', page=posts.next_num) #добавить в урл значение page= номер следующей строаници
+    else: next_url=None
+    if posts.has_prev:
+        prev_url = url_for('index', page=posts.prev_num)
+    else: prev_url=None
+    
+    return render_template("index.html", title='Index page', form=form,  posts=posts.items,next_url=next_url, prev_url=prev_url)
 
 @app.route('/index2',  methods=['GET', 'POST'])
 def index2(): #название функции любое, оно нужно чтобы декоратор роутерс  стройкой вышерендрил именно эту функцию)
@@ -110,11 +123,21 @@ def user(username):
     print(colored('В переменной User (просмотр профиля)','yellow', attrs=['bold']), user)
     #в таблице User ищется зерегистрированый юзер  (глупость полная, мы же зарегались)
     # но ссылка динамичная потом видимо в ЮЗЕРНЕЙ будет передавться другие имена  для просмотра чужих станиц
-    posts = [
-        {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}
-            ]
-    return render_template('user.html', user=user, posts=posts)
+    page = request.args.get('page', 1, type=int)
+    posts = user.posts.order_by(Post.timestamp.desc()).paginate(page, app.config['POST_PER_PAGE'], False)
+    if posts.has_next: #описание работы пагинации в функции индекс
+        next_url = url_for('user', username=user.username, page=posts.next_num) 
+        '''в данном коде в адресную строку передается username и page, это нужно чтобы при нажатии на ссылки 
+         next_url,  prev_url на страницу ЮЗЕР в строку адреса передавался текущий юзер и номер страници пагинации, по нему происходит
+         переданное имя юера сравнивается с  данными в таблице юзер выше, если есть такой функция продолжает работу)
+        также имя юзера передается на базовой страниеце в ссылке, чтобы на данную странице мог зайти только залогиненый юзер
+        запись о котором есть в таблице юзер
+    '''
+    else: next_url=None
+    if posts.has_prev:
+        prev_url = url_for('user',username=user.username, page=posts.prev_num)
+    else: prev_url=None
+    return render_template('user.html', user=user, posts=posts.items, next_url=next_url, prev_url=prev_url)
     #Открывается страница пользователя который вошел в систему потому что его данные передаются на входную функцию в ХТМЛ форме
 
 @app.before_request

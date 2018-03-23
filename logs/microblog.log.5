@@ -1,4 +1,4 @@
-2018-03-01 21:05:43,125 ERROR: Exception on /upload [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
+2018-03-01 22:03:37,096 ERROR: Exception on /upload [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -29,7 +29,7 @@ Traceback (most recent call last):
   File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 36, in top-level template code
     {% block content %}{% endblock %}
   File "/home/ff7f/Desktop/microblog/app/templates/upload.html", line 29, in block "content"
-    <div><a title='Download button' href={{ url_for('uploads/Alien.gif') }}>Ссылка на гифку? (наведи курсор)</a></div>
+    <div><a  href="{{ url_for("static/download", filename="Help.ico") }}">Ссылка на гифку? (наведи курсор)</a></div>
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/helpers.py", line 333, in url_for
     return appctx.app.handle_url_build_error(error, endpoint, values)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1805, in handle_url_build_error
@@ -40,9 +40,9 @@ Traceback (most recent call last):
     force_external=external)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/werkzeug/routing.py", line 1776, in build
     raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'uploads/Alien.gif'. Did you mean 'upload' instead?
-2018-03-01 21:06:20,138 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 21:06:20,883 ERROR: Exception on /upload [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
+werkzeug.routing.BuildError: Could not build url for endpoint 'static/download' with values ['filename']. Did you mean 'static' instead?
+2018-03-01 22:03:50,725 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 22:03:51,045 ERROR: Exception on /upload [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -73,7 +73,7 @@ Traceback (most recent call last):
   File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 36, in top-level template code
     {% block content %}{% endblock %}
   File "/home/ff7f/Desktop/microblog/app/templates/upload.html", line 29, in block "content"
-    <div><a title='Download button' href={{ url_for('uploads/') }}Alien.gif>Ссылка на гифку? (наведи курсор)</a></div>
+    <div><a  href="{{ url_for("static/Download", filename="Help.ico") }}">Ссылка на гифку? (наведи курсор)</a></div>
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/helpers.py", line 333, in url_for
     return appctx.app.handle_url_build_error(error, endpoint, values)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1805, in handle_url_build_error
@@ -84,5 +84,17 @@ Traceback (most recent call last):
     force_external=external)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/werkzeug/routing.py", line 1776, in build
     raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'uploads/'. Did you mean 'upload' instead?
-2018-03-01 21:06:47,355 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+werkzeug.routing.BuildError: Could not build url for endpoint 'static/Download' with values ['filename']. Did you mean 'static' instead?
+2018-03-01 22:04:12,177 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 22:06:32,226 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 22:08:15,229 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 22:08:33,947 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 22:09:07,710 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 22:10:29,433 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 22:13:11,034 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 22:13:36,520 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 22:14:10,958 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 22:14:23,735 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 22:14:45,625 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-01 22:16:11,435 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-03-02 21:21:40,994 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
