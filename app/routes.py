@@ -197,3 +197,13 @@ def upload():
 def for_css():
     print(colored('Загружается страница forcss','yellow', attrs=['bold']))
     return render_template('forcss.html', title='CSS exp')
+
+
+@app.route('/Flogin',  methods=['GET', 'POST'])
+def Loginform(): 
+    
+    if request.method == 'POST':
+        for value in request.form: #создает список всех форм которые применены на странице
+            print(value, '--->', request.form[value])
+
+    return render_template('Loginform.html', title='Login form' )   

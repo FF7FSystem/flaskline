@@ -1,2 +1,83 @@
-2018-03-23 22:02:21,764 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-23 22:06:50,449 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+2018-04-02 22:10:56,515 ERROR: Exception on /register [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ff7f/Desktop/microblog/app/routes.py", line 116, in register
+    return render_template('register.html', title='Register', form=form)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ff7f/Desktop/microblog/app/templates/register.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 72, in block "content"
+    {% block app_content %}
+  File "/home/ff7f/Desktop/microblog/app/templates/register.html", line 29, in block "app_content"
+    {{ wtf.form_field(form.submit,button_map=(submit,"danger")) }}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/runtime.py", line 579, in _invoke
+    rv = self._func(*arguments)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 65, in template
+    {% call _hz_form_wrap(horizontal_columns, form_type, True, required=required) %}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/runtime.py", line 579, in _invoke
+    rv = self._func(*arguments)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 21, in template
+    {{caller()}}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/runtime.py", line 579, in _invoke
+    rv = self._func(*arguments)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 66, in template
+    {{field(class='btn btn-%s' % button_map.get(field.name, 'default'),
+jinja2.exceptions.UndefinedError: 'tuple object' has no attribute 'get'
+2018-04-02 22:11:10,165 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 22:13:14,704 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 22:33:51,969 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 22:37:40,754 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 22:39:30,125 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 22:41:07,895 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 22:41:42,374 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 22:44:11,869 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 22:45:55,877 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 22:46:10,200 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 22:48:13,895 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 22:48:49,424 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 22:49:05,865 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 22:53:12,792 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 22:53:30,265 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 22:56:03,918 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 22:56:27,694 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 22:57:57,266 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 22:58:07,555 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 22:58:41,958 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 22:59:04,307 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 22:59:41,313 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 22:59:51,649 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 23:01:55,759 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 23:02:45,801 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 23:04:35,399 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 23:04:52,959 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-02 23:05:29,285 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]

@@ -1,4 +1,4 @@
-2018-03-02 22:08:28,507 ERROR: Exception on /forcss [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
+2018-04-02 21:42:45,783 ERROR: Exception on /register [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,8 +12,8 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/ff7f/Desktop/microblog/app/routes.py", line 176, in for_css
-    return render_template('forcss.html', title='CSS exp')
+  File "/home/ff7f/Desktop/microblog/app/routes.py", line 116, in register
+    return render_template('register.html', title='Register', form=form)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 133, in render_template
     return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 869, in get_or_select_template
@@ -30,12 +30,20 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/ff7f/Desktop/microblog/app/templates/forcss.html", line 8, in template
-    <a href="{{ url_for('index') }}">Вернуться на Home page</a> <br>
+  File "/home/ff7f/Desktop/microblog/app/templates/register.html", line 26, in template
+    {{ wtf.form_field(form.email, placeholder="Электронная почта","form-control" )}}
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 497, in _parse
     return Parser(self, source, name, encode_filename(filename)).parse()
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 901, in parse
     result = nodes.Template(self.subparse(), lineno=1)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 875, in subparse
     add_data(self.parse_tuple(with_condexpr=True))
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 620, in parse_tuple
@@ -64,54 +72,10 @@ Traceback (most recent call last):
     node = self.parse_postfix(node)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 676, in parse_postfix
     node = self.parse_call(node)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 767, in parse_call
-    self.stream.expect('comma')
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/lexer.py", line 384, in expect
-    self.name, self.filename)
-jinja2.exceptions.TemplateSyntaxError: expected token ',', got 'index'
-2018-03-02 22:10:25,329 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-02 22:15:20,171 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-02 22:28:10,743 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-02 22:29:05,935 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-02 22:33:22,456 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-02 22:40:06,709 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-02 22:40:35,644 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-02 22:41:12,526 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-02 22:41:33,742 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-02 22:46:34,704 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-02 22:47:26,250 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-02 22:49:27,107 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-02 22:51:01,864 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-04 21:29:35,033 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-04 21:30:43,733 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-04 21:31:06,299 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-04 21:31:26,933 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-04 21:32:49,575 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-04 21:34:36,942 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-04 21:39:36,012 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-04 21:40:22,087 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-04 21:40:30,197 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-04 21:40:40,993 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-04 21:40:57,226 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-04 21:41:08,213 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-04 21:41:18,105 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-04 21:49:04,109 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-04 22:01:56,167 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-04 22:09:37,684 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-04 22:10:02,407 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-04 22:12:22,093 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-04 22:12:45,535 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-04 22:13:14,181 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-06 21:30:45,400 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-06 21:35:15,935 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-06 21:39:28,608 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-06 21:40:39,489 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-06 21:42:03,423 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-06 21:43:01,579 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-06 21:46:46,667 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-06 22:00:56,251 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-06 22:10:25,013 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-06 22:24:12,059 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-06 22:24:54,079 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-07 21:42:07,521 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-07 21:42:57,213 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 789, in parse_call
+    ensure(not kwargs)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 763, in ensure
+    token.lineno)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 59, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: invalid syntax for function call expression

@@ -16,7 +16,7 @@ class LoginForm(FlaskForm):
 class RegistrationForm(FlaskForm):
 	#Форма Регистрации пользователей
     print(colored('Создается класс Registration','blue', attrs=['bold']))
-    username = StringField('Username', validators=[DataRequired()])
+    username = StringField('', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])

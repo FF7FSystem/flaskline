@@ -1,4 +1,4 @@
-2018-03-01 21:05:43,125 ERROR: Exception on /upload [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
+2018-04-02 21:23:09,219 ERROR: Exception on /register [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,8 +12,8 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/ff7f/Desktop/microblog/app/routes.py", line 170, in upload
-    return render_template('upload.html', title='Upload',form=form)
+  File "/home/ff7f/Desktop/microblog/app/routes.py", line 116, in register
+    return render_template('register.html', title='Register', form=form)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
     context, ctx.app)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
@@ -24,25 +24,30 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/ff7f/Desktop/microblog/app/templates/upload.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 36, in top-level template code
-    {% block content %}{% endblock %}
-  File "/home/ff7f/Desktop/microblog/app/templates/upload.html", line 29, in block "content"
-    <div><a title='Download button' href={{ url_for('uploads/Alien.gif') }}>Ссылка на гифку? (наведи курсор)</a></div>
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/helpers.py", line 333, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1805, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/helpers.py", line 323, in url_for
-    force_external=external)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'uploads/Alien.gif'. Did you mean 'upload' instead?
-2018-03-01 21:06:20,138 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
-2018-03-01 21:06:20,883 ERROR: Exception on /upload [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
+  File "/home/ff7f/Desktop/microblog/app/templates/register.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 72, in block "content"
+    {% block app_content %}
+  File "/home/ff7f/Desktop/microblog/app/templates/register.html", line 21, in block "app_content"
+    {{ wtf.form_field("glyphicon glyphicon-search" ,form.username,placeholder="Имя пользователя")}}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/runtime.py", line 579, in _invoke
+    rv = self._func(*arguments)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 36, in template
+    {% if field.flags.required and not required in kwargs %}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 430, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'str object' has no attribute 'flags'
+2018-04-02 21:23:21,391 ERROR: Exception on /register [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -56,8 +61,8 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/ff7f/Desktop/microblog/app/routes.py", line 170, in upload
-    return render_template('upload.html', title='Upload',form=form)
+  File "/home/ff7f/Desktop/microblog/app/routes.py", line 116, in register
+    return render_template('register.html', title='Register', form=form)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
     context, ctx.app)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
@@ -68,21 +73,27 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/ff7f/Desktop/microblog/app/templates/upload.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 36, in top-level template code
-    {% block content %}{% endblock %}
-  File "/home/ff7f/Desktop/microblog/app/templates/upload.html", line 29, in block "content"
-    <div><a title='Download button' href={{ url_for('uploads/') }}Alien.gif>Ссылка на гифку? (наведи курсор)</a></div>
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/helpers.py", line 333, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1805, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/helpers.py", line 323, in url_for
-    force_external=external)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'uploads/'. Did you mean 'upload' instead?
-2018-03-01 21:06:47,355 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:36]
+  File "/home/ff7f/Desktop/microblog/app/templates/register.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 72, in block "content"
+    {% block app_content %}
+  File "/home/ff7f/Desktop/microblog/app/templates/register.html", line 21, in block "app_content"
+    {{ wtf.form_field(glyphicon glyphicon-search ,form.username,placeholder="Имя пользователя")}}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/runtime.py", line 579, in _invoke
+    rv = self._func(*arguments)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 36, in template
+    {% if field.flags.required and not required in kwargs %}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 430, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'str object' has no attribute 'flags'
+2018-04-02 21:23:27,236 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]

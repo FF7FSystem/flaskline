@@ -1,40 +1,80 @@
-<html>
-    <head>
-      {% if title %}
-      <title>{{ title }} - Microblog</title>
-      {% else %}
-      <title>А Титл не передан буде этот</title>
-      {% endif %}
-    <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon"> <!-- вставляю картинку в титл-->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylelist.css')}}"> <!--подключаю файл ЦСС-->
-    </head>
-    <body>
-        <div>
-            Microblog: 
-            
-            <p><a href="{{ url_for('index') }}">Home page</a>
-            <a href="{{ url_for('index2') }}">Alians page</a></p>
-            {% if current_user.is_anonymous %}
-                <p><a href="{{ url_for('login') }}">Login page</a></p>
-            {% else %}
-                <a href="{{ url_for('logout') }}">Logout page</a>
-                <a href="{{ url_for('user', username=current_user.username) }}">Профайл Тебя</a>  <!-- В урл передается динамический компонент юзернейм который в функции юзер проверяет есть ли данный залогиненый пользователь в базах и т.д.-->          
-            {% endif %}
-            <a href="{{ url_for('table') }}">Таблицы</a>
-            <p><a href="{{ url_for('upload') }}">Загрузка файлов</a></p>
-             <a href="{{ url_for('for_css') }}">CSS experience</a>
-            
+{% extends 'bootstrap/base.html' %}
+    
+    {% block head %}
+        {{super()}} <!-- через данную функцию можно делать вставки в родительские блоки типа ХЕД-->
+        <link rel="shortcut icon" href="static/img/FF7F.png" type="image/x-icon">
+    {% endblock %}
+    
+    {% block title %}
+      {% if title %} {{ title }}
+      {% else %} А Титл не передан {% endif %}
+    {% endblock %}
+
+    {% block navbar %}
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="{{ url_for('index') }}">Fence</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url_for('index2') }}">ManyForms</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Forms<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ url_for('Loginform') }}">Login form</a></li>
+                            <li><a href="#">Форма</a></li>
+                            <li><a href="#">Форма</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>
+                            </ul>
+                            </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if current_user.is_anonymous %}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+                     <!-- В урл передается динамический компонент юзернейм который в функции юзер проверяет есть ли данный залогиненый пользователь в базах и т.д.--> 
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    <li><a href="{{ url_for('table') }}">Таблицы</a></li>
+
+                    <li><a href="{{ url_for('upload') }}">Загрузка файлов</a></li>
+                    <li><a href="{{ url_for('for_css') }}">CSS experience</a></li>
+
+                    {% endif %}
+                </ul>
+            </div>
         </div>
-        <hr>
+    </nav>
+{% endblock %}
+    <!--  Старые письмена
+    <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">  вставляю картинку в титл
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylelist.css')}}"> подключаю файл ЦСС-->
+              
+            
+{% block content %}
+<!-- Данный блок определяет вид всплывающих сообщений-->
+    <div class="container">
         {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info" role="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
         {% endwith %}
-        {% block content %}{% endblock %}
-    </body>
-</html>
+        
+        {% block app_content %}
+        <!-- Данный блок  это контент, который будет загружаться с других страниц и которые наследуют все настройки из данного базового шаблона-->
+        {% endblock %}
+{% endblock %}

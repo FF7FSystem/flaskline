@@ -7,6 +7,7 @@ from termcolor import colored
 import logging
 from logging.handlers import RotatingFileHandler
 import os
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -14,7 +15,9 @@ app.config.from_object(Config)
 db = SQLAlchemy(app) #представление базы данных
 migrate = Migrate(app, db) #представление механизма миграции
 login = LoginManager(app) # инициализация механизма логирования
+bootstrap = Bootstrap(app) # инициализация НТМЛ фреймворка
 login.login_view = 'login' #активация функции только зарегеные пользователи могут просмотреть  какието страницы
+login.login_message = "Пожалуйста, зайдите под своим логином, чтобы открыть эту страницу." # Замена стандартного сообщения своим
 from app import routes, models, errors # подключает к нашему приложению библиотеки (файлы которе мы создали)
 '''
 routes - отвечает за маршрутизацию и рендринг страниц
