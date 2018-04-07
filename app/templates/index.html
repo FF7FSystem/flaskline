@@ -1,10 +1,22 @@
 {% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-    <h1>Hi, {{ current_user.username }}!</h1>
+    <h3>Приветствуем тебя пользователь, {{ current_user.username }}!</h3>
+    <form class="form form-group" method="post" role="form">
+        <div class="row">
+            <div class="col-md-4">
+            {{ form.hidden_tag() }}
+            {{ wtf.form_errors(form, hiddens="only") }}
+            {{ wtf.form_field(form.post,placeholder="Послание предкам")}} 
+            {{ wtf.form_field(form.submit) }}
+            </div>
+        </div> 
+
+    <!--
     <form action="" method="post">
         {{ form.hidden_tag() }}
-        <p>
+       
             {{ form.post.label }}<br>
             {{ form.post(cols=32, rows=4) }}<br>
             {% for error in form.post.errors %}
@@ -13,6 +25,7 @@
         </p>
         <p>{{ form.submit() }}</p>
     </form>
+-->
 
     {% for post in posts %}
     	{% include '_post.html' %}

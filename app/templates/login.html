@@ -1,26 +1,43 @@
 {% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-<p><a href="{{ url_for('register') }}">Зарегистрироваться!</a></p>
-    <h1>Вход в тайное логово</h1>
+<p></p>
+    <h1>Вход</h1>
+    <form class="form form-group" method="post" role="form">
+      <div class="row">
+        <div class="col-md-4">
+            {{ form.hidden_tag() }}
+            {{ wtf.form_errors(form, hiddens="only") }}
+            {{ wtf.form_field(form.username,placeholder="Имя пользователя")}} 
+            {{ wtf.form_field(form.password,placeholder="Пароль")}} 
+            {{ wtf.form_field(form.remember_me)}}
+            {{ wtf.form_field(form.submit) }}
+             <a href="{{ url_for('register') }}" class="btn btn-success" >Registration</a>
+
+         </div>
+    </div> 
+
+    <!-- То что было до бутстрапа
+
     <form action="" method="post">
         {{ form.hidden_tag() }}
         <p>
             {{ form.username.label }}<br>
             {{ form.username(size=32) }}<br>
             {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}  - сообщение об ошибке из спец словаря, на ненашем естественно]</span>
+            <span style="color: red;">[{{ error }}  </span>
             {% endfor %}
         </p>
         <p>
             {{ form.password.label }}<br>
             {{ form.password(size=32) }}<br>
             {% for error in form.password.errors %}
-            <span style="color: red;">[{{ error }}  сообщение об ошибке из спец словаря, на ненашем естественно]</span>
+            <span style="color: red;">[{{ error }} </span>
             {% endfor %}
         </p>
         <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-       <p>{{ form.submit()}} (Кнопка и названия полей меняется в "forms.py" где мы из создаем)</p>
+       <p>{{ form.submit()}} </p>
     </form>
-
+-->
 {% endblock %}

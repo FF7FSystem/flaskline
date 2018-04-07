@@ -81,7 +81,7 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         print(colored('В переменной user  - ','yellow', attrs=['bold']), user)
         if user is None or not user.check_password(form.password.data):
-            flash('НЕверный логин или пароль')
+            flash('Введен неверный логин или пароль')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
@@ -89,7 +89,7 @@ def login():
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
         return redirect(next_page)
-    return render_template('login.html', title='Логырование', form=form)
+    return render_template('login.html', title='Login page', form=form)
 
 @app.route('/logout')
 def logout():
@@ -201,9 +201,11 @@ def for_css():
 
 @app.route('/Flogin',  methods=['GET', 'POST'])
 def Loginform(): 
-    
+    ValueForm=[]
     if request.method == 'POST':
-        for value in request.form: #создает список всех форм которые применены на странице
-            print(value, '--->', request.form[value])
+        for key in request.form: #создает список всех форм которые применены на странице
+            print(key,request.form[key])
+            if request.form[key]:
+                ValueForm.append("{0}: {1}".format(key,request.form[key]))
 
-    return render_template('Loginform.html', title='Login form' )   
+    return render_template('Loginform.html', title='Login form',ValueForm=ValueForm)   

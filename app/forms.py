@@ -7,16 +7,16 @@ from app.models import User
 
 class LoginForm(FlaskForm):
     print(colored('Создается класс Login','blue', attrs=['bold']))
-    username = StringField('Имя пользователя', validators=[DataRequired()])
-    password = PasswordField('Пароль', validators=[DataRequired()])
-    remember_me = BooleanField('Запомнить меня на всегда )')
-    submit = SubmitField('Вход')
+    username = StringField('User name', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember_me = BooleanField('Remember me')
+    submit = SubmitField('Enter')
 
 
 class RegistrationForm(FlaskForm):
 	#Форма Регистрации пользователей
     print(colored('Создается класс Registration','blue', attrs=['bold']))
-    username = StringField('', validators=[DataRequired()])
+    username = StringField('User name', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
@@ -72,6 +72,6 @@ class UploadForm(FlaskForm):
     submit = SubmitField('Загрузить ')
     
 class PostForm(FlaskForm):
-    post = TextAreaField('Написанное пером не вырубить и топором, дерзай...', validators=[DataRequired(), Length(min=1, max=140)])
-    submit = SubmitField('Опубликовать сие писание!')
+    post = TextAreaField('Заполнив форму, вы можете оставить запись на стене', validators=[DataRequired(), Length(min=1, max=140)])
+    submit = SubmitField('Оставить запись ')
     
