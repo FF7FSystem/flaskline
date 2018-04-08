@@ -2,17 +2,39 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-    <h3>Приветствуем тебя пользователь, {{ current_user.username }}!</h3>
+        
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h4 align="center">Добропожаловать {{ current_user.username }}!</h4>
+                 </div>   
+            </div>     
+  
+ 
     <form class="form form-group" method="post" role="form">
         <div class="row">
-            <div class="col-md-4">
-            {{ form.hidden_tag() }}
-            {{ wtf.form_errors(form, hiddens="only") }}
-            {{ wtf.form_field(form.post,placeholder="Послание предкам")}} 
-            {{ wtf.form_field(form.submit) }}
-            </div>
-        </div> 
+            <div class="col-md-8">
+                {{ form.hidden_tag() }}
+                {{ wtf.form_errors(form, hiddens="only") }}
+                <div class="panel panel-info">
+                    <div class="panel-heading" >
+                        {{ wtf.form_field(form.post,placeholder="От 1  до  140 символов")}} 
+                        <button type="submit" class="btn btn-primary">Оставить запись</button>    
+                    </div> 
+                </div> 
+            </div> 
+        </div>
+    </form>
 
+<nav aria-label="...">
+    <ul class="pager">
+        <li class="previous{% if not prev_url %} disabled{% endif %}">
+            <a href="{{ prev_url or '#' }}"> <span aria-hidden="true">&larr;</span> Новые</a>
+        </li>
+        <li class="next{% if not next_url %} disabled{% endif %}">
+            <a href="{{ next_url or '#' }}"> Старые <span aria-hidden="true">&rarr;</span> </a>
+        </li>
+    </ul>
+</nav>
     <!--
     <form action="" method="post">
         {{ form.hidden_tag() }}
@@ -30,6 +52,7 @@
     {% for post in posts %}
     	{% include '_post.html' %}
 	{% endfor %}
+
 <nav aria-label="...">
     <ul class="pager">
         <li class="previous{% if not prev_url %} disabled{% endif %}">

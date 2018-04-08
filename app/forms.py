@@ -37,9 +37,9 @@ class RegistrationForm(FlaskForm):
 
 class EditProfileForm(FlaskForm):
     print(colored('Создается класс EditProfileForm','blue', attrs=['bold']))
-    username = StringField('Username', validators=[DataRequired()])
-    about_me = TextAreaField('About me', validators=[Length(min=0, max=140)])
-    submit = SubmitField('Submit')
+    username = StringField('Имя пользователя:', validators=[DataRequired()])
+    about_me = TextAreaField('О себе:', validators=[Length(min=0, max=140)])
+    submit = SubmitField('Применить')
 
     def __init__(self, original_username, *args, **kwargs): #ДАнный конструктор говорит что класс EditProfileForm не только наследуется от FlaskForm
         super(EditProfileForm, self).__init__(*args, **kwargs) # он так же наследует от себя новый метод так что при вызове self.original_username
@@ -55,7 +55,9 @@ class Manyforms(FlaskForm):
     print(colored('Создается класс Manyforms','blue', attrs=['bold']))
     tablename = StringField('Сюда вводить текст', validators=[DataRequired()])
     Radio_choose = RadioField('Выбрать Таблицу', choices = 
-        [('User', 'table User'),('Post', 'table Post'),('Empty','No table')])
+        [('1', 'Проедете перекресток первым'),
+        ('2', 'Проедете перекресток одновременно со встречным автомобилем до проезда мотоцикла'),
+        ('3','Проедете перекресток последним')])
     Listfield = SelectField('Список, выбрать тут:',choices = 
         [('none',''),('aria', 'Aria'), ('kipelov', 'Kipelov'), ('epidemia','Epidemia'),('master','Master')])
     Tafform = TextAreaField('Поле ввода текста ', validators=[Length(min=0, max=25),DataRequired()])

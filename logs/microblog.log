@@ -1,25 +1,25 @@
-2018-04-07 23:29:20,075 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:30:53,562 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:32:30,040 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:33:04,539 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:34:20,216 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:34:47,964 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:35:05,860 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:37:41,800 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:37:55,037 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:38:08,078 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:38:33,887 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:38:42,858 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:38:53,675 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:39:13,098 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:39:22,325 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:40:04,047 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:43:01,428 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:43:35,721 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:44:59,729 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:45:40,291 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:46:06,835 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:52:08,690 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:53:38,985 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:54:27,801 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:55:40,219 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:35:25,952 ERROR: Exception on /Radiobutton [POST] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ff7f/Desktop/microblog/app/routes.py", line 224, in Radiobutton
+    return redirect(url_for('Radiobutton'),ValueForm=ValueForm)
+TypeError: redirect() got an unexpected keyword argument 'ValueForm'
+2018-04-08 21:35:59,599 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:36:40,828 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:38:25,906 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:38:48,925 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:39:04,297 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:39:40,354 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:40:04,893 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:41:09,529 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]

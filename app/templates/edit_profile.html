@@ -1,7 +1,36 @@
 {% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-    <h1>Редактирование профайла</h1>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 >Редактирование профайла</h3>
+                 </div>   
+            </div>     
+        </div>
+    </div>
+</form>
+    <form  method="post" role="form">
+    
+        
+            {{ form.hidden_tag() }}
+            {{ wtf.form_errors(form, hiddens="only") }}
+            <div class="row">
+                <div class="col-md-3">
+                    {{ wtf.form_field(form.username)}} 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    {{ wtf.form_field(form.about_me)}}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Сохранить изменения</button>
+</form>
+
+    <!-- OLD
     <form action="" method="post">
         {{ form.hidden_tag() }}
         <p>
@@ -20,4 +49,5 @@
         </p>
         <p>{{ form.submit() }}</p>
     </form>
+-->
 {% endblock %}

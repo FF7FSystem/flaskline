@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+
+    <form class="form form-group" method="post" role="form">
+        
+        <img src="{{url_for('static', filename='img/Radiobutton_tiket.jpg')}}" class="img-responsive img-thumbnail">
+        <div class="panel panel-info">
+            
+            
+            <div class="panel-heading">
+                    <div class="panel-title">
+                        <h3>Вы намерены повернуть налево. Ваши действия?</h3>
+                    </div>
+            </div>
+            <div class="panel-body">
+                {{ form.hidden_tag() }}
+                {{ wtf.form_errors(form, hiddens="only") }}
+                {{ wtf.form_field(form.Radio_choose)}} 
+                <input type="submit" class="btn btn-success" value="Подтвердить">
+            </div>
+        </div>
+</form>
+
+{% if ValueForm == 'Y' %}
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <div class="panel-title">Ответ верный <span class="glyphicon glyphicon-ok"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if ValueForm == 'N' %}
+
+<div class="panel panel-danger">
+    <div class="panel-heading">
+        <div class="panel-title ">Ответ Неверный. <span class="glyphicon glyphicon-remove"></span>
+        </div>
+    </div>
+        <div class="panel-body">
+            Данный перекресток является нерегулируемым. Вы должны уступить дорогу мотоциклу, поскольку он заезжает на перекресток справа от Вас. Мотоцикл должен уступить право проезда красному автомобилю, который так же находится с правой стороны от него.
+        </div>
+    
+</div>
+{% endif %}
+
+{% endblock %}

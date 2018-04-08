@@ -1,4 +1,4 @@
-2018-04-06 21:56:39,734 ERROR: Exception on /index [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
+2018-04-08 20:48:20,160 ERROR: Exception on /Radiobutton [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,114 +12,100 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/ff7f/Desktop/microblog/app/routes.py", line 36, in index
-    return render_template("index.html", title='Index page', form=form,  posts=posts.items,next_url=next_url, prev_url=prev_url)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
-    context, ctx.app)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
-    rv = template.render(context)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
+  File "/home/ff7f/Desktop/microblog/app/routes.py", line 224, in Radiobutton
+    return render_template('Radiobutton.html', title='Use radiobutton',ValueForm=ValueForm,form=form)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 133, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/ff7f/Desktop/microblog/app/templates/_post.html", line 14, in template
-    {{ post.body }
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 1005, in render
-    return concat(self.root_render_func(self.new_context(vars)))
-  File "/home/ff7f/Desktop/microblog/app/templates/index.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
-    {%- block html %}
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
-    {% block body -%}
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
-    {% block content -%}
-  File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 79, in block "content"
-    {% block app_content %}
-  File "/home/ff7f/Desktop/microblog/app/templates/index.html", line 31, in block "app_content"
-    {% include '_post.html' %}
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/home/ff7f/Desktop/microblog/app/templates/_post.html", line 14, in template
-    {{ post.body }
+  File "/home/ff7f/Desktop/microblog/app/templates/Radiobutton.html", line 43, in template
+    {% endblock %}
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 497, in _parse
     return Parser(self, source, name, encode_filename(filename)).parse()
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 901, in parse
     result = nodes.Template(self.subparse(), lineno=1)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 875, in subparse
-    add_data(self.parse_tuple(with_condexpr=True))
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 620, in parse_tuple
-    args.append(parse())
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 432, in parse_expression
-    return self.parse_condexpr()
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 437, in parse_condexpr
-    expr1 = self.parse_or()
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 450, in parse_or
-    left = self.parse_and()
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 459, in parse_and
-    left = self.parse_not()
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 470, in parse_not
-    return self.parse_compare()
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 474, in parse_compare
-    expr = self.parse_math1()
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 496, in parse_math1
-    left = self.parse_concat()
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 507, in parse_concat
-    args = [self.parse_math2()]
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 517, in parse_math2
-    left = self.parse_pow()
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 528, in parse_pow
-    left = self.parse_unary()
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 547, in parse_unary
-    node = self.parse_postfix(node)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 672, in parse_postfix
-    node = self.parse_subscript(node)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 700, in parse_subscript
-    next(self.stream)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/lexer.py", line 359, in __next__
-    self.current = next(self._iter)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/lexer.py", line 562, in wrap
-    for lineno, token, value in stream:
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/lexer.py", line 683, in tokeniter
-    filename)
-jinja2.exceptions.TemplateSyntaxError: unexpected '}'
-2018-04-06 21:56:49,695 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-06 21:57:15,753 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-06 21:58:17,481 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-06 22:00:37,060 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-06 22:01:34,932 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-06 22:01:53,108 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-06 22:03:48,346 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-06 22:04:47,207 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-06 22:05:15,882 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-06 22:05:59,822 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-06 22:07:12,552 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-06 22:25:49,951 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-06 22:36:12,744 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-06 22:36:44,036 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-06 22:37:31,329 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-06 22:37:44,037 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-06 22:39:45,209 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-06 22:39:53,579 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-06 22:41:27,426 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-06 22:41:44,336 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-06 22:42:16,500 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-06 22:42:42,106 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-06 22:45:43,406 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:00:46,163 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:04:00,565 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:12:02,706 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:12:18,378 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:12:36,241 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:13:09,830 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-07 23:28:05,374 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 213, in parse_if
+    'name:endif'))
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 144, in parse_statement
+    self.fail_unknown_tag(token.value, token.lineno)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 97, in fail_unknown_tag
+    return self._fail_ut_eof(name, self._end_token_stack, lineno)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 90, in _fail_ut_eof
+    self.fail(' '.join(message), lineno)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 59, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endblock'. You probably made a nesting mistake. Jinja is expecting this tag, but currently looking for 'elif' or 'else' or 'endif'. The innermost block that needs to be closed is 'if'.
+2018-04-08 20:48:39,179 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 20:49:51,786 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 20:50:25,635 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 20:50:46,144 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 20:51:41,905 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 20:53:27,330 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 20:53:44,616 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 20:53:56,154 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 20:54:28,563 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 20:54:52,770 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 20:55:04,363 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:00:12,939 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:03:20,616 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:11:27,858 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:14:34,589 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:14:57,487 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:17:53,351 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:18:16,534 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:22:38,044 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:23:46,366 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:25:33,605 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:26:38,653 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:26:53,984 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:27:19,800 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:28:37,238 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:29:40,704 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:32:51,021 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:33:23,449 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:34:11,118 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 21:34:15,194 ERROR: Exception on /Radiobutton [POST] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ff7f/Desktop/microblog/app/routes.py", line 224, in Radiobutton
+    return redirect(url_for('Radiobutton'),ValueForm=ValueForm)
+TypeError: redirect() got an unexpected keyword argument 'ValueForm'

@@ -204,8 +204,22 @@ def Loginform():
     ValueForm=[]
     if request.method == 'POST':
         for key in request.form: #создает список всех форм которые применены на странице
-            print(key,request.form[key])
+            #print(key,request.form[key])
             if request.form[key]:
                 ValueForm.append("{0}: {1}".format(key,request.form[key]))
-
     return render_template('Loginform.html', title='Login form',ValueForm=ValueForm)   
+
+@app.route('/Radiobutton',  methods=['GET', 'POST'])
+def Radiobutton(): 
+    ValueForm=''
+    form = Manyforms()
+    if request.method == 'POST':
+        for key in request.form: #создает список всех форм которые применены на странице
+            if key == 'Radio_choose' and request.form[key] == '3': 
+                # на странице в форме есть токен который защищает  форму от атак 
+                #по этому сдесь в сравнение внесено поле Радиочуз так как нас интересует, что будет возвращено в  данной форме 
+                ValueForm='Y'
+            else:
+                ValueForm='N'
+            
+    return render_template('Radiobutton.html', title='Use radiobutton',ValueForm=ValueForm,form=form)
