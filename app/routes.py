@@ -172,8 +172,7 @@ def table(): #
     for_thead=inf_for_table['public']
     service_tab=inf_for_table['service']
 
-    return render_template( 'table.html', user="Юзерок-фраерок",title='Таблица',
-        table=table,for_thead=for_thead,service_tab=service_tab)
+    return render_template( 'table.html', title='Таблица',table=table,for_thead=for_thead,service_tab=service_tab)
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
@@ -190,7 +189,7 @@ def upload():
             print(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 
-    return render_template('upload.html', title='Upload/Download',form=form)
+    return render_template('upload.html', title='Download/Upload',form=form)
 
 
 @app.route('/forcss')
@@ -223,3 +222,41 @@ def Radiobutton():
                 ValueForm='N'
             
     return render_template('Radiobutton.html', title='Use radiobutton',ValueForm=ValueForm,form=form)
+
+@app.route('/Checkbox',  methods=['GET', 'POST'])
+def Checkbox(): 
+    temp=''
+    ValueForm=''
+    form = Manyforms()
+    if request.method == 'POST':
+        for key in request.form: #создает список всех форм которые применены на странице
+            print(key,'--->',request.form[key])
+            if 'Cheboxfield' in key: 
+                # на странице в форме есть токен который защищает  форму от атак 
+                #по этому сдесь в сравнение внесено поле Радиочуз так как нас интересует, что будет возвращено в  данной форме 
+                temp+=key[-1]
+        print(temp)
+        temp=''.join(sorted(temp))
+        print(temp)
+        if temp=='245':
+            ValueForm='correct'
+        elif temp=='25':
+            ValueForm='unicorn'
+        elif temp=='':    
+            ValueForm='empty'
+        elif temp=='12345':    
+            ValueForm='full'
+        else:
+            ValueForm='wrong'
+    print(ValueForm)
+            
+    return render_template('checkbox.html', title='Use checkbox',ValueForm=ValueForm,form=form)
+
+@app.route('/listarea',  methods=['GET', 'POST'])
+def listarea(): 
+    form = Manyforms()
+    ValueForm1,ValueForm2=False,False
+    if request.method == 'POST':
+        ValueForm1=request.form['Listfield']
+        ValueForm2= request.form['Tafform']
+    return render_template('listaria.html', title='List/TextArea',ValueForm1=ValueForm1,ValueForm2=ValueForm2,form=form)

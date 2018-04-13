@@ -42,8 +42,8 @@ class User(UserMixin, db.Model):
 	
 	def for_table():
 		print(colored('Запуск функции передачи атрибутов таблицы User','green', attrs=['bold']))
-		return {'public':['username','email','about_me','last_seen'],
-				'service':['password_hash','posts']}
+		return {'public':['username','about_me','last_seen'],
+				'service':['email','password_hash','posts']}
 
 class Post(db.Model):
 	print(colored('Описание таблицы Post','green', attrs=['bold']))

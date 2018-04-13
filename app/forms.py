@@ -58,20 +58,22 @@ class Manyforms(FlaskForm):
         [('1', 'Проедете перекресток первым'),
         ('2', 'Проедете перекресток одновременно со встречным автомобилем до проезда мотоцикла'),
         ('3','Проедете перекресток последним')])
-    Listfield = SelectField('Список, выбрать тут:',choices = 
-        [('none',''),('aria', 'Aria'), ('kipelov', 'Kipelov'), ('epidemia','Epidemia'),('master','Master')])
-    Tafform = TextAreaField('Поле ввода текста ', validators=[Length(min=0, max=25),DataRequired()])
-    Cheboxfield1 = BooleanField('чекбокс1', default=False)
-    Cheboxfield2 = BooleanField('чекбокс2', default=False)
-    Cheboxfield3 = BooleanField('чекбокс3', default=False)
+    Listfield = SelectField('Форма "список",используется для выбора значения из представленных вариантов:',choices = 
+        [('Яблоко','Яблоко'),('Мячик', 'Мячик'), ('Синхрофазатрон', 'Синхрофазатрон'), ('Груша','Груша'),('Апельсин','Апельсин')])
+    Tafform = TextAreaField('Форма "ввод текста", на данном сайте применяется для заполнения и публикации  сообщений на  главной странице ', validators=[Length(min=0, max=250),DataRequired()])
+    Cheboxfield1 = BooleanField('Лох-несское чудовище', default=False)
+    Cheboxfield2 = BooleanField('Кот', default=False)
+    Cheboxfield3 = BooleanField('Королева банши "Сильвана Ветрокрылая"', default=False)
+    Cheboxfield4 = BooleanField('Единорог', default=False)
+    Cheboxfield5 = BooleanField('Скотч-терьер', default=False)
     submit = SubmitField('Enter ')
 
 class UploadForm(FlaskForm):
     print(colored('Создается класс UploadForm','blue', attrs=['bold']))
-    fupload = FileField('Загрузка Файлов', validators=[
-    FileRequired(),FileAllowed(['jpg','gif','ico'], 'онли jpg, gif,ico!')]) 
+    fupload = FileField('', validators=[
+    FileRequired(),FileAllowed(['jpg','gif','ico'], 'Загружать можно  файлы только с расширением jpg, gif, ico!')]) 
     #Проверка что форма не пустая, проверка расширения файла (из списка)
-    submit = SubmitField('Загрузить ')
+    submit = SubmitField('Загрузить')
     
 class PostForm(FlaskForm):
     post = TextAreaField('Заполнив форму, вы можете оставить запись на стене', validators=[DataRequired(), Length(min=1, max=140)])
