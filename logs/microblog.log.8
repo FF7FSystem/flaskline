@@ -1,43 +1,4 @@
-2018-04-08 19:25:15,518 ERROR: Exception on /Radiobutton [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/ff7f/Desktop/microblog/app/routes.py", line 220, in Radiobutton
-    return render_template('Radiobutton.html', title='Use radiobutton',ValueForm=ValueForm)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
-    context, ctx.app)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
-    rv = template.render(context)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/home/ff7f/Desktop/microblog/app/templates/Radiobutton.html", line 4, in top-level template code
-    {% block app_content %}
-  File "/home/ff7f/Desktop/microblog/app/templates/Radiobutton.html", line 8, in block "app_content"
-    {{ wtf.quick_form(form) }}
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/runtime.py", line 579, in _invoke
-    rv = self._func(*arguments)
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 200, in template
-    {{ form.hidden_tag() }}
-  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 430, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2018-04-08 19:28:27,666 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-08 19:34:45,637 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-08 19:34:46,752 ERROR: Exception on /Radiobutton [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
+2018-04-08 19:43:49,867 ERROR: Exception on /Radiobutton [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -77,18 +38,63 @@ Traceback (most recent call last):
     {% block content -%}
   File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 80, in block "content"
     {% block app_content %}
-  File "/home/ff7f/Desktop/microblog/app/templates/Radiobutton.html", line 10, in block "app_content"
-    {{ wtf.form_field(form.username,placeholder="Имя пользователя")}}
+  File "/home/ff7f/Desktop/microblog/app/templates/Radiobutton.html", line 11, in block "app_content"
+    {{ wtf.form_field(form.label)}}
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/runtime.py", line 579, in _invoke
     rv = self._func(*arguments)
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 36, in template
     {% if field.flags.required and not required in kwargs %}
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 430, in getattr
     return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'app.forms.Manyforms object' has no attribute 'username'
-2018-04-08 19:35:45,967 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-08 19:35:57,437 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-08 19:38:51,080 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-08 19:40:58,527 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-08 19:41:38,801 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-08 19:43:47,955 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+jinja2.exceptions.UndefinedError: 'app.forms.Manyforms object' has no attribute 'label'
+2018-04-08 19:44:37,099 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-08 19:44:38,080 ERROR: Exception on /Radiobutton [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ff7f/Desktop/microblog/app/routes.py", line 221, in Radiobutton
+    return render_template('Radiobutton.html', title='Use radiobutton',ValueForm=ValueForm,form=form)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ff7f/Desktop/microblog/app/templates/Radiobutton.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/home/ff7f/Desktop/microblog/app/templates/base.html", line 80, in block "content"
+    {% block app_content %}
+  File "/home/ff7f/Desktop/microblog/app/templates/Radiobutton.html", line 12, in block "app_content"
+    {{ wtf.form_field(form.Radio_choose.label)}}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/runtime.py", line 579, in _invoke
+    rv = self._func(*arguments)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 36, in template
+    {% if field.flags.required and not required in kwargs %}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 430, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'wtforms.fields.core.Label object' has no attribute 'flags'
+2018-04-08 19:52:39,433 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]

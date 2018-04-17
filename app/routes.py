@@ -218,8 +218,10 @@ def Radiobutton():
                 # на странице в форме есть токен который защищает  форму от атак 
                 #по этому сдесь в сравнение внесено поле Радиочуз так как нас интересует, что будет возвращено в  данной форме 
                 ValueForm='Y'
-            else:
+            elif key == 'Radio_choose' and (request.form[key] == '2' or request.form[key] == '1') :
                 ValueForm='N'
+            else:
+                ValueForm='empty'
             
     return render_template('Radiobutton.html', title='Use radiobutton',ValueForm=ValueForm,form=form)
 

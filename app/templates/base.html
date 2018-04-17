@@ -1,10 +1,16 @@
 {% extends 'bootstrap/base.html' %}
     
     {% block head %}
-        {{super()}} <!-- через данную функцию можно делать вставки в родительские блоки типа ХЕД-->
+        {{super()}} <!-- через данную функцию можно делать вставки в родительские блоки типа ХЕД, без него родительсткий блок затирается-->
         <link rel="shortcut icon" href="static/img/FF7F.png" type="image/x-icon">
     {% endblock %}
     
+    {% block scripts %}
+        {{ super() }}
+        {{ moment.include_moment() }}
+        {{ moment.lang('ru') }} 
+    {% endblock %}
+
     {% block title %}
       {% if title %} {{ title }}
       {% else %} А Титл не передан {% endif %}
@@ -89,4 +95,5 @@
         {% block app_content %}
         <!-- Данный блок  это контент, который будет загружаться с других страниц и которые наследуют все настройки из данного базового шаблона-->
         {% endblock %}
+
 {% endblock %}

@@ -1,4 +1,4 @@
-2018-04-08 21:35:25,952 ERROR: Exception on /Radiobutton [POST] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
+2018-04-10 22:04:29,726 ERROR: Exception on /listarea [GET] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,35 +12,115 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/ff7f/Desktop/microblog/app/routes.py", line 224, in Radiobutton
-    return redirect(url_for('Radiobutton'),ValueForm=ValueForm)
-TypeError: redirect() got an unexpected keyword argument 'ValueForm'
-2018-04-08 21:35:59,599 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-08 21:36:40,828 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-08 21:38:25,906 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-08 21:38:48,925 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-08 21:39:04,297 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-08 21:39:40,354 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-08 21:40:04,893 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-08 21:41:09,529 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-08 21:42:25,532 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-09 21:54:01,480 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-09 22:03:07,300 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-09 22:05:45,261 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-10 20:44:04,304 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-10 20:44:43,937 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-10 20:46:01,867 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-10 20:47:31,845 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-10 20:48:20,051 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-10 21:06:07,237 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-10 21:07:33,182 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-10 21:07:52,422 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-10 21:20:47,652 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-10 21:21:53,635 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-10 21:22:37,269 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-10 21:24:17,377 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-10 21:44:48,379 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-10 21:56:59,052 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-10 21:57:35,114 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-10 21:58:37,739 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
-2018-04-10 22:04:28,669 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+  File "/home/ff7f/Desktop/microblog/app/routes.py", line 270, in listarea
+    return render_template('listaria.html', title='List/TextArea',ValueForm=ValueForm,form=form)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/templating.py", line 133, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ff7f/Desktop/microblog/app/templates/listaria.html", line 16, in template
+    {{ wtf.form_field(form.Listfield")}}
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 901, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 875, in subparse
+    add_data(self.parse_tuple(with_condexpr=True))
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 620, in parse_tuple
+    args.append(parse())
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 432, in parse_expression
+    return self.parse_condexpr()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 437, in parse_condexpr
+    expr1 = self.parse_or()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 450, in parse_or
+    left = self.parse_and()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 459, in parse_and
+    left = self.parse_not()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 470, in parse_not
+    return self.parse_compare()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 474, in parse_compare
+    expr = self.parse_math1()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 496, in parse_math1
+    left = self.parse_concat()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 507, in parse_concat
+    args = [self.parse_math2()]
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 517, in parse_math2
+    left = self.parse_pow()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 528, in parse_pow
+    left = self.parse_unary()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 547, in parse_unary
+    node = self.parse_postfix(node)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 676, in parse_postfix
+    node = self.parse_call(node)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/parser.py", line 767, in parse_call
+    self.stream.expect('comma')
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/jinja2/lexer.py", line 384, in expect
+    self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: expected token ',', got 'string'
+2018-04-10 22:05:03,617 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-10 22:05:21,502 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-10 22:05:32,952 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-10 22:06:42,823 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-10 22:08:05,717 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-12 21:04:04,923 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-12 21:05:06,822 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-12 21:05:45,310 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-12 21:05:58,811 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-12 21:08:28,739 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-12 21:08:36,607 ERROR: Exception on /listarea [POST] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ff7f/Desktop/microblog/app/routes.py", line 262, in listarea
+    print(key,'--->',request.form[Listfield])
+NameError: name 'key' is not defined
+2018-04-12 21:08:52,597 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-12 21:08:55,518 ERROR: Exception on /listarea [POST] [in /home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ff7f/Desktop/microblog/flask/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ff7f/Desktop/microblog/app/routes.py", line 262, in listarea
+    print(request.form[Listfield])
+NameError: name 'Listfield' is not defined
+2018-04-12 21:09:27,419 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
+2018-04-12 21:15:13,873 INFO: Microblog startup [in /home/ff7f/Desktop/microblog/app/__init__.py:39]
