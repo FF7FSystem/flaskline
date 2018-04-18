@@ -39,6 +39,11 @@ class User(UserMixin, db.Model):
 
 		digest = md5(self.email.lower().encode('utf-8')).hexdigest()
 		return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(digest, size)
+	
+	def for_table():
+		print(colored('Запуск функции передачи атрибутов таблицы User','green', attrs=['bold']))
+		return {'public':['username','about_me','last_seen'],
+				'service':['email','password_hash','posts']}
 
 class Post(db.Model):
 	print(colored('Описание таблицы Post','green', attrs=['bold']))

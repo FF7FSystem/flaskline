@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+ <div class="panel panel-success">
+    <div class="panel-heading" >
+        Пример построения таблицы. <br> Данная таблица, содержит данные о зарегистрированных на сайте пользователях и их    данные, которые не являются секретными.
+    </div>
+    </div>     
+    <table class="table table-bordered">
+        <caption><span class="glyphicon glyphicon-list"> </span> Таблица пользователей  </caption>
+        <thead>
+        	<tr class="active"> 
+                {% for row in for_thead %} 
+                 	<th> {{ row }}  </th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+        	
+            {% for col in table %}    
+               <tr>
+                	{% for row in col %} 
+                    	<td>{{ row }} </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+
+
+     <div class="panel panel-info">
+    <div class="panel-heading" >
+	<h5>Также данная таблица содержит следующие конфиденциалные поля:  </h5>
+    <ul>
+    {% for row in service_tab %} 
+        <li><p> {{ row }} </p></li>
+    {% endfor %}
+   </ul>
+</div>
+
+    
+{% endblock %}  
+ 

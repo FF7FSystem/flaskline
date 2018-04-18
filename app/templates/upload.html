@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block app_content %}
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="panel-title"><h4><span class="glyphicon glyphicon-download"></span>  Загрузить файл (только файлы с расширением jpg ,gif ,ico )</h4>
+        </div>
+    </div>
+    <div class="panel-body">
+        <form class="form form-group" method="POST" role="form" enctype = "multipart/form-data">
+            {{ form.hidden_tag() }}
+            {{ wtf.form_errors(form, hiddens="only") }}
+                    <!--form.hidden_tag() создает скрытое поле, включающее токен, который используется для защиты формы от CSRF атак 
+                    -->
+            {{ wtf.form_field(form.fupload)}} 
+            <button type="submit" class="btn btn-btn btn-success"> Загрузить <span class=" glyphicon glyphicon-download-alt"></span>
+            </button>
+       </form>
+    </div>
+</div>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <div class="panel-title">Данная форма для загрузки файлов размером не более 6 Мб. При привышении указанного лимита обозначенного в файле конфига фласк  вылетает ошибка 413. Написан код на обрадотку данной ошибки, но Фласк его не корректно отрабатывает, судя по инфе из инета так работает на  локальном сервере. Увы.
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="panel-title"><h4>Выгрузить файлы имеющиеся на сервере</h4>
+        </div>
+    </div>
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a title='link for static file' download href="static/Help.ico" ><span class=" glyphicon glyphicon-upload"></span>  Скачать иконку "спасательный круг"   </a>  <img src="/static/Help.ico" > 
+            </li>
+            <li class="list-group-item">
+                <a title='link for static file' download href="static/Refresh.ico" ><span class=" glyphicon glyphicon-upload"></span>  Скачать иконку "обновление"   </a>  <img src="/static/Refresh.ico"> 
+            </li>
+            <li class="list-group-item">
+                <a title='link for static file' download href="static/Linux.png" ><span class=" glyphicon glyphicon-upload"></span>  Скачать файл png "пингвин"   </a>  <img src="/static/Linux.png"> 
+            </li>
+            <li class="list-group-item">
+                <a title='link for static file' download href="static/FF7F.png" ><span class=" glyphicon glyphicon-upload"></span>  Скачать файл png "металлист"   </a>  <img src="/static/FF7F.png"> 
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <div class="panel-title">Если навести курсор на ссылку, появится подсказка.
+            Выгружает файлы тольк из папки static и вложенные в нее, другие папки фласк не рассматривает как содержащие статику, хотя путь указан верно.
+        </div>
+    </div>
+</div>
+
+<!--
+     <form action="" method="post" enctype = "multipart/form-data">
+        {{ form.hidden_tag() }}
+            
+
+        <p>
+            {{ form.fupload.label }}<br>
+            {{ form.fupload }}<br>
+            {% for error in form.fupload.errors %}
+            	<span style="color: red;">[{{ error }} ]</span>
+            {% endfor %}
+        </p>
+         
+    {{form.submit}}
+
+</form>
+-->
+{% endblock %}

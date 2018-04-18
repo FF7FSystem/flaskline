@@ -1,8 +1,81 @@
 {% extends "base.html" %}
 
-{% block content %}
-    <h1>Hi, {{ current_user.username }}!</h1>
-    
-    <div><p> >Юзернейм молвил: <b> эта страница наследует ссылки из ХТМЛ-БАЗЕ. </b></p></div>
+{% block app_content %}
+    <h3>Hi, {{ current_user.username }}!</h3>
+    <p> Эта страница наследует ссылки из ХТМЛ-БАЗЕ. </p>
+     <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <!--form.hidden_tag() создает скрытое поле, включающее токен, который используется для защиты формы от CSRF атак-->
+        <p>
+            {{ form.tablename.label }}<br>
+            {{ form.tablename(size=32,maxlength=10) }}<br>
+            {% for error in form.tablename.errors %}
+            	<span style="color: red;">[{{ error }} ]</span>
+            {% endfor %}
+        </p>
+     <p>
+        {{ form.Radio_choose.label }} <br> Формируется через Фласк как обчный список  с  радиобатонами в каждой строке 
+        {{ form.Radio_choose }}
+        {% for error in form.Radio_choose.errors %}
+            <span style="color: green;">[{{ error }} ]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.Listfield.label }}<br>
+        {{ form.Listfield }}
+        {% for error in form.Listfield.errors %}
+            <span style="color: yellow;">[{{ error }} ]</span>
+        {% endfor %}
+     </p>
+      <p>
+			{{ form.Tafform.label }}<br>
+            {{ form.Tafform(cols=20, rows=4) }}<br>
+            {% for error in form.Tafform.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+    </p> 
+    <p>Чекбоксы описанные через Фласк форм --->
+
+    {{form.Cheboxfield1.label}}
+    {{form.Cheboxfield1}}
+	
+	{{form.Cheboxfield2.label}}
+    {{form.Cheboxfield2}}
+
+    {{form.Cheboxfield3.label}}
+    {{form.Cheboxfield3}}
+	</p>
+	<p>Чекбоксы описанные через HTML --->
+    <!-- тут будет динамический список чекбоксов который описывается через HTML  а не Фласк_ВТФ -->
+     {% for i in checkbox_list %}
+     <label for = "" > {{i}} </label>
+     <input type="checkbox" id ="" name={{i}} value="Значение чекбокса" checked>
+     {% endfor %}
+	</p>     
+    <p>{{ form.submit()}} <!-- Фалсковая кнопка, остальные ХТМЛовские-->
+    <button type="reset"> <font size="3"> Очистить форму  <img src="/static/Refresh.ico" > </button> 	</p>
+    <input type="image" name="ImgButton" src="/static/Help.ico" value="не где не отображается"> - А это кнопка в виде картинки работает как Submit
+     </form>
    
+   {% if value != 'none' %}		 <p>Ты только что ввел "{{value}}"</p>
+   {% else %} 			  	 	 <p> Тут напишется то что ты наберешь в форме  и жмакнешь кнопку</p>
+   {% endif %}  
+
+   {% if value2!= 'none' %} 	 <p> В радио баттон выбрано "{{value2}}"</p>
+   {% else %} 			   	    <p> радиобатон не выбран</p>
+   {% endif %}  
+
+   {% if value3!= 'none' %} 	<p> В форму списка введено "{{value3}}"</p>
+   {% else %} 			   	    <p> В форме списка ничего не введено, БЭД</p>
+   {% endif %} 
+
+    {% if value4!= 'none' %} 	<p> В форму текста введено -->"{{value4}}"</p>
+   {% else %} 			   	    <p> В форме текста ничего не введено, БЭД</p>
+   {% endif %} 
+
+  	<p>  В чекбоксах ФЛАСК  -->{{value5}} ,  {{value6}} , {{value7}}</p>
+    
+
+
 {% endblock %}

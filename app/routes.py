@@ -2,29 +2,67 @@
 from termcolor import colored
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from app.forms import LoginForm, RegistrationForm
-from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User
+from app.forms import LoginForm, RegistrationForm, EditProfileForm ,Manyforms, UploadForm, PostForm #Импортирование форм
+from app.models import User, Post #импортирование таблиц
 from werkzeug.urls import url_parse
 from datetime import datetime
-from app.forms import EditProfileForm
+from flask_login import current_user, login_user, logout_user, login_required
+import os
+from werkzeug.utils import secure_filename
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
     print(colored('Загружается страница Index','yellow', attrs=['bold']))
-    posts = [
-        {   'author': {'username': 'Евгений'}, 'body': 'Beautiful day in Port!'},
-        {   'author': {'username': 'Стас'},    'body': 'The Avengers movie was!'}, 
-        {   'author': {'username': 'Дмитрий'}, 'body': 'Какая гадость эта ваша заливная ыба!!'}
-            ]
-    return render_template('index.html', title='Homer', posts=posts)
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(body=form.post.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Райз май сан (или о чудо пост опубликовался)')
+        return redirect(url_for('index'))
 
-@app.route('/index2')
+    page = request.args.get('page', 1, type=int) # считывает с  адресной строки значение page=
+    posts = Post.query.order_by(Post.timestamp.desc()).paginate(page, app.config['POST_PER_PAGE'], False)
+    # posts делает запрос в базу с учетом пагинации и числа считаного с адресной строки
+    if posts.has_next: #Тру если  в нашей поагинации есть следующая страница
+        next_url = url_for('index', page=posts.next_num) #добавить в урл значение page= номер следующей строаници
+    else: next_url=None
+    if posts.has_prev:
+        prev_url = url_for('index', page=posts.prev_num)
+    else: prev_url=None
+    
+    return render_template("index.html", title='Index page', form=form,  posts=posts.items,next_url=next_url, prev_url=prev_url)
+
+@app.route('/index2',  methods=['GET', 'POST'])
 def index2(): #название функции любое, оно нужно чтобы декоратор роутерс  стройкой вышерендрил именно эту функцию)
     print(colored('Загружается страница Index2','yellow', attrs=['bold']))
-    return render_template('index2.html', user="Юзерок-фраерок")
+    form= Manyforms()
+    if form.validate_on_submit():
+        value=form.tablename.data
+        value2=form.Radio_choose.data
+        value3=form.Listfield.data
+        value4=form.Tafform.data
+       
+    else:
+        value,value2,value3,value4='none','none','none','none'
+    
+    value5=form.Cheboxfield1.data
+    value6=form.Cheboxfield2.data
+    value7=form.Cheboxfield3.data
+    #далее считывание со страницы и обработка  форм
+    checkbox_list=['number1','number2','number3'] #для динамического создания чекбоксов по кол-ву элементов
+    if request.method == 'POST':
+        for checkbox_value in request.form: #создает список всех форм которые применены на странице
+        #в список попадают формы которые были применены ( Например если чекбокс не нажат или в текстовое поле 
+        # не введена инфа то  данная форма в список не попадет как будто ее нет на странице)
+            temp=checkbox_value + '---->' +(request.form[checkbox_value])
+            #выше строка выдует значение "value" формы, которая задействована на странице, соответств есть в списке)
+            print(temp)
+
+    return render_template('index2.html', user="Юзерок-фраерок",form=form, value=value,value2=value2,
+        value3=value3,value4=value4,value5=value5,value6=value6,value7=value7,checkbox_list=checkbox_list)    
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -43,7 +81,7 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         print(colored('В переменной user  - ','yellow', attrs=['bold']), user)
         if user is None or not user.check_password(form.password.data):
-            flash('НЕверный логин или пароль')
+            flash('Введен неверный логин или пароль')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
@@ -51,7 +89,7 @@ def login():
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
         return redirect(next_page)
-    return render_template('login.html', title='Логырование', form=form)
+    return render_template('login.html', title='Login page', form=form)
 
 @app.route('/logout')
 def logout():
@@ -82,14 +120,24 @@ def register():
 def user(username):
     print(colored('Загружается страница User (просмотр профиля)','yellow', attrs=['bold']))
     user = User.query.filter_by(username=username).first_or_404()
-    print(colored('В переменной User (просмотр профиля)','red', attrs=['bold']), user)
+    print(colored('В переменной User (просмотр профиля)','yellow', attrs=['bold']), user)
     #в таблице User ищется зерегистрированый юзер  (глупость полная, мы же зарегались)
     # но ссылка динамичная потом видимо в ЮЗЕРНЕЙ будет передавться другие имена  для просмотра чужих станиц
-    posts = [
-        {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}
-            ]
-    return render_template('user.html', user=user, posts=posts)
+    page = request.args.get('page', 1, type=int)
+    posts = user.posts.order_by(Post.timestamp.desc()).paginate(page, app.config['POST_PER_PAGE'], False)
+    if posts.has_next: #описание работы пагинации в функции индекс
+        next_url = url_for('user', username=user.username, page=posts.next_num) 
+        '''в данном коде в адресную строку передается username и page, это нужно чтобы при нажатии на ссылки 
+         next_url,  prev_url на страницу ЮЗЕР в строку адреса передавался текущий юзер и номер страници пагинации, по нему происходит
+         переданное имя юера сравнивается с  данными в таблице юзер выше, если есть такой функция продолжает работу)
+        также имя юзера передается на базовой страниеце в ссылке, чтобы на данную странице мог зайти только залогиненый юзер
+        запись о котором есть в таблице юзер
+    '''
+    else: next_url=None
+    if posts.has_prev:
+        prev_url = url_for('user',username=user.username, page=posts.prev_num)
+    else: prev_url=None
+    return render_template('user.html', user=user, posts=posts.items, next_url=next_url, prev_url=prev_url)
     #Открывается страница пользователя который вошел в систему потому что его данные передаются на входную функцию в ХТМЛ форме
 
 @app.before_request
@@ -104,7 +152,7 @@ def before_request():
 @login_required
 def edit_profile():
     print(colored('Запускается функция edit_profile','yellow', attrs=['bold']))
-    form = EditProfileForm()
+    form = EditProfileForm(current_user.username)
     if form.validate_on_submit():
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
@@ -114,5 +162,103 @@ def edit_profile():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
-    return render_template('edit_profile.html', title='Edit Profile',
-                           form=form)
+    return render_template('edit_profile.html', title='Edit Profile', form=form)
+
+@app.route('/table')
+def table(): #
+    print(colored('Загружается страница table','yellow', attrs=['bold']))
+    inf_for_table=User.for_table()
+    table=[[ getattr(i,j) for j in inf_for_table['public']] for i in User.query.all()]
+    for_thead=inf_for_table['public']
+    service_tab=inf_for_table['service']
+
+    return render_template( 'table.html', title='Таблица',table=table,for_thead=for_thead,service_tab=service_tab)
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+    print(colored('Запускается функция upload','yellow', attrs=['bold']))
+    form = UploadForm()
+    if form.validate_on_submit():
+        if request.method == 'POST':
+            file = form.fupload.data #присваеваем переменной содержимое файла кажись
+            '''Если размер загружаемого файла больше чем задано в конфиге в переменной 'MAX_CONTENT_LENGTH'
+            Приложение выдает ошибку 413. Можно сделать сравнение типа:       
+            if len(file.read())<="число меньше чем в 'MAX_CONTENT_LENGTH" тогда отрабатывать, если нет , то писать уведомление пользователю о привышении.''' 
+            filename = file.filename #изымаем имя файла из формы
+            filename = secure_filename(filename) #если имя файла некорекное (спец символы) сохраняет без спец символов
+            print(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                
+    return render_template('upload.html', title='Download/Upload',form=form)
+
+
+@app.route('/forcss')
+def for_css():
+    print(colored('Загружается страница forcss','yellow', attrs=['bold']))
+    return render_template('forcss.html', title='CSS exp')
+
+
+@app.route('/Flogin',  methods=['GET', 'POST'])
+def Loginform(): 
+    ValueForm=[]
+    if request.method == 'POST':
+        for key in request.form: #создает список всех форм которые применены на странице
+            #print(key,request.form[key])
+            if request.form[key]:
+                ValueForm.append("{0}: {1}".format(key,request.form[key]))
+    return render_template('Loginform.html', title='Login form',ValueForm=ValueForm)   
+
+@app.route('/Radiobutton',  methods=['GET', 'POST'])
+def Radiobutton(): 
+    ValueForm=''
+    form = Manyforms()
+    if request.method == 'POST':
+        for key in request.form: #создает список всех форм которые применены на странице
+            if key == 'Radio_choose' and request.form[key] == '3': 
+                # на странице в форме есть токен который защищает  форму от атак 
+                #по этому сдесь в сравнение внесено поле Радиочуз так как нас интересует, что будет возвращено в  данной форме 
+                ValueForm='Y'
+            elif key == 'Radio_choose' and (request.form[key] == '2' or request.form[key] == '1') :
+                ValueForm='N'
+            else:
+                ValueForm='empty'
+            
+    return render_template('Radiobutton.html', title='Use radiobutton',ValueForm=ValueForm,form=form)
+
+@app.route('/Checkbox',  methods=['GET', 'POST'])
+def Checkbox(): 
+    temp=''
+    ValueForm=''
+    form = Manyforms()
+    if request.method == 'POST':
+        for key in request.form: #создает список всех форм которые применены на странице
+            print(key,'--->',request.form[key])
+            if 'Cheboxfield' in key: 
+                # на странице в форме есть токен который защищает  форму от атак 
+                #по этому сдесь в сравнение внесено поле Радиочуз так как нас интересует, что будет возвращено в  данной форме 
+                temp+=key[-1]
+        print(temp)
+        temp=''.join(sorted(temp))
+        print(temp)
+        if temp=='245':
+            ValueForm='correct'
+        elif temp=='25':
+            ValueForm='unicorn'
+        elif temp=='':    
+            ValueForm='empty'
+        elif temp=='12345':    
+            ValueForm='full'
+        else:
+            ValueForm='wrong'
+    print(ValueForm)
+            
+    return render_template('checkbox.html', title='Use checkbox',ValueForm=ValueForm,form=form)
+
+@app.route('/listarea',  methods=['GET', 'POST'])
+def listarea(): 
+    form = Manyforms()
+    ValueForm1,ValueForm2=False,False
+    if request.method == 'POST':
+        ValueForm1=request.form['Listfield']
+        ValueForm2= request.form['Tafform']
+    return render_template('listaria.html', title='List/TextArea',ValueForm1=ValueForm1,ValueForm2=ValueForm2,form=form)

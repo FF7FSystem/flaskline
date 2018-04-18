@@ -1,6 +1,37 @@
+<div class="table-responsive"> 
+<table class="table table-hover"  >
+    <tr  >
+        <td width="70px" style="border:0px; margin:0 auto; " >
+            <div align="center"  class="panel panel-primary">
+                <div class="panel-heading">
+                    <a href="{{ url_for('user', username=post.author.username) }}" style='color:white;'> {{ post.author.username }}</a> 
+                </div>
+                <div align="center" class="panel-primary">
+                    <a href="{{ url_for('user', username=post.author.username) }}"> <img src="{{ post.author.avatar(70) }}"></a>
+                </div>
+            </div>
+        </td>
+        <td style="border:0px; ">
+            <div class="panel panel-info ">
+                <div class="panel-heading">
+                    {{ moment(post.timestamp).fromNow() }}
+            </div>
+                <div class="panel-body " style="height: 70px; padding-top: 5px;">
+                  {{ post.body }} 
+
+
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+</div>
+
+<!--
 <table>
     <tr valign="top">
         <td><img src="{{ post.author.avatar(36) }}"></td>
-        <td>{{ post.author.username }} Молвит:<br>{{ post.body }}</td>
+        <td>{{ post.author.username }} Молвит:<br>  {{ post.body }} </td>
     </tr>
 </table>
+-->

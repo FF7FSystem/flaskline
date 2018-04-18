@@ -1,0 +1,84 @@
+body {
+	background-image: url(../img/hetfield_3.jpg);
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-size: 1000px 150px; 
+
+	}
+html {
+	background-image: url(../img/Blueprint.jpg);
+	background-attachment: scroll;
+	background-position: bottom; center;	}
+
+img{ /*конфиг для всех картинок*/
+	margin-top: 10px; /*отсутпы*/
+	margin-right: 10px;
+	margin-bottom:  10px;
+	float:left; /*обтекание*/
+	opacity: 0.5; /*прозрачность*/
+	width: 300px; /*если ширина задана а высота нет то высота  выставляется пропорционально*/
+	box-shadow: 0 0 50px
+
+}
+.vladimg
+{ /*конфиг для картинки Hetfield_1*/
+	margin-top: 10px; /*отсутпы*/
+	margin-right: 10px;
+	margin-bottom:  10px;
+	float:right; /*обтекание*/
+	width: 300px; /*если ширина задана а высота нет то высота  выставляется пропорционально*/
+	}
+
+
+
+h1 {color: white; font-size:18px;	text-align:center; text-decoration:line-through; font-family: cursive;}
+h2 {color: #0000ff; font-size:16px; text-shadow: 4px 1px 3px #B22222; font-style: italic; } 
+h4{	color:white; 
+	border-width: 5px; 
+	border-style:double;
+	border-color:yellow;
+	background-image: url(../img/batman.jpg);
+	opacity: 0.5; /* прозрачность блока*/}
+p {color: white; font-size:14px; letter-spacing: 1px; text-indent:10%; font-family: "Time New Roman";}/*indent - Абзац*/
+
+/*меняю цвет тега а (ссылки) в стандарте, при клике и при наведении курсора*/
+a {
+color:black;
+text-decoration:none;} /*чтобы ссылка не была подчеркнута*/
+a:visited {color:green} 
+a:hover {color:red;
+		 font-size:28px; /*увеличивает шрифт при наведении*/
+		 transition:all 1s ease; }/* плавное увеличение размера в 1 сек. */
+.idvlad{color:brown;}
+#idvald2{color:yellow;}
+
+.block /*блок в который будет вставлена картинка, он будет ездить на странице туда сюда вместе с скролом*/
+{
+position:fixed; /* абсолютное позиционирование*/
+top:100px; /* от верхнего края*/
+right:50px; /* от верхнего правого края*/	
+}
+
+
+li
+{
+	color:yellow;
+	list-style-image:url(../img/Linux.png);
+}
+
+.menu li
+{
+	
+	padding:10px;
+	
+	margin:5px;
+	float:left;
+	border:1px solid #fff;
+	color:white;
+	list-style:none;
+}
+div
+{
+float:right;
+border:1px solid #fff;
+}

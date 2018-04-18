@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+
+    <form class="form form-group" method="post" role="form">
+        
+        <img src="{{url_for('static', filename='img/Checkbox.jpg')}}" class="img-responsive img-thumbnail">
+        <div class="panel panel-info">
+            
+            
+            <div class="panel-heading">
+                    <div class="panel-title">
+                        <h4>Каких существ не бывает в настоящей жизни ?</h4>
+                    </div>
+            </div>
+            <div class="panel-body">
+                {{ form.hidden_tag() }}
+                {{ wtf.form_errors(form, hiddens="only") }}
+                {{ wtf.form_field(form.Cheboxfield1)}} 
+                {{ wtf.form_field(form.Cheboxfield2)}} 
+                {{ wtf.form_field(form.Cheboxfield3)}}
+                {{ wtf.form_field(form.Cheboxfield4)}} 
+                {{ wtf.form_field(form.Cheboxfield5)}} 
+
+                <input type="submit" class="btn btn-success" value="Выбрать">
+            </div>
+        </div>
+</form>
+
+{% if ValueForm == 'correct' %}
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <div class="panel-title">Ответ верный <span class="glyphicon glyphicon-ok"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if ValueForm == 'unicorn' %}
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <div class="panel-title ">Ответ Неверный. <span class="glyphicon glyphicon-star-empty"></span>
+            </div>
+        </div>
+            <div class="panel-body">
+                Воу воу, единороги существуют !!!
+            </div>
+        
+    </div>
+{% endif %}
+
+{% if ValueForm == 'full' %}
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <div class="panel-title ">Ответ Неверный. <span class="glyphicon glyphicon-book"></span>
+            </div>
+        </div>
+            <div class="panel-body">
+                Такой взрослый а в сказки веришь...
+            </div>
+    </div>
+{% endif %}
+
+{% if ValueForm == 'empty' %}
+ <div class="panel panel-danger">
+        <div class="panel-heading">
+            <div class="panel-title ">Ответ Неверный. <span class="glyphicon glyphicon-repeat"></span>
+            </div>
+        </div>
+            <div class="panel-body">
+                Кое кто в этом списке, все же, настоящий, выбирайте.
+            </div>
+    </div>
+{% endif %}
+
+{% if ValueForm == 'wrong' %}
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <div class="panel-title">Ответ неверный <span class="glyphicon glyphicon-remove"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}

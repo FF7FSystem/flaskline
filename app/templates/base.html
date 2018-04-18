@@ -1,35 +1,99 @@
-<html>
-    <head>
-      {% if title %}
-      <title>{{ title }} - Microblog</title>
-      {% else %}
-      <title>А Титл кто в рендринг функцию передаст, дедпихто?</title>
-      {% endif %}
-    </head>
-    <body>
-        <div>
-            Microblog: 
-            
-            <p><a href="{{ url_for('index') }}">Home page</a>
-            <a href="{{ url_for('index2') }}">Alians page</a></p>
-            {% if current_user.is_anonymous %}
-                <p><a href="{{ url_for('login') }}">Login page</a></p>
-            {% else %}
-                <a href="{{ url_for('logout') }}">Logout page</a>
-                <a href="{{ url_for('user', username=current_user.username) }}">Профайл Тебя</a>            
-            {% endif %}
-            
+{% extends 'bootstrap/base.html' %}
+    
+    {% block head %}
+        {{super()}} <!-- через данную функцию можно делать вставки в родительские блоки типа ХЕД, без него родительсткий блок затирается-->
+        <link rel="shortcut icon" href="static/img/FF7F.png" type="image/x-icon">
+    {% endblock %}
+    
+    {% block scripts %}
+        {{ super() }}
+        {{ moment.include_moment() }}
+        {{ moment.lang('ru') }} 
+    {% endblock %}
+
+    {% block title %}
+      {% if title %} {{ title }}
+      {% else %} А Титл не передан {% endif %}
+    {% endblock %}
+
+    {% block navbar %}
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="{{ url_for('index') }}">Wall</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Forms<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ url_for('Loginform', ) }}">Login form</a></li>
+                            <li><a href="{{ url_for('Radiobutton' ) }}">Radiobutton</a></li>
+                            <li><a href="{{ url_for('Checkbox' ) }}">Checkbox</a></li>
+                            <li><a href="{{ url_for('listarea' ) }}">List/TextArea</a></li>
+                            <li class="divider"></li>
+                            <li class ="disabled"><a href="#">Старые изыскания:</a></li>
+                            <li><a href="{{ url_for('index2') }}">в формах</a></li>
+                            <li><a href="{{ url_for('for_css') }}">в CSS </a></li>
+                            <li class="divider"></li>
+                        </ul>
+                    </li>
+
+                            <li><a href="{{ url_for('table') }}">Table</a></li>
+                            <li><a href="{{ url_for('upload') }}">Download/Upload</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Useful link<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="http://stepkinblog.ru/bootstrap/besplatnyj-kurs-po-osnovam-bootstrap3.html/">Степеинблог Bootstrap</a></li>
+                            <li><a href="http://stepkinblog.ru/css/besplatnyj-kurs-po-osnovam-css.html/">Степеинблог CSS</a></li>
+                            <li><a href="https://habrahabr.ru/post/349060/">Учебник Фласк</a></li>
+                            <li><a href="http://htmlbook.ru">Сайт Htmlbook</a></li>
+                        </ul>
+                    </li>
+                            
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if current_user.is_anonymous %}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('register') }}">Registration</a></li>
+                    
+                    {% else %}
+                        <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+                         <!-- В урл передается динамический компонент юзернейм который в функции юзер проверяет есть ли данный залогиненый пользователь в базах и т.д.--> 
+                        <li  class="active" ><a href="{{ url_for('logout') }}" >Logout</a></li>
+
+                    {% endif %}
+                </ul>
+            </div>
         </div>
-        <hr>
+    </nav>
+{% endblock %}
+    <!--  Старые письмена
+    <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">  вставляю картинку в титл
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylelist.css')}}"> подключаю файл ЦСС-->
+              
+            
+{% block content %}
+<!-- Данный блок определяет вид всплывающих сообщений-->
+    <div class="container">
         {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info" role="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
         {% endwith %}
-        {% block content %}{% endblock %}
-    </body>
-</html>
+        
+        {% block app_content %}
+        <!-- Данный блок  это контент, который будет загружаться с других страниц и которые наследуют все настройки из данного базового шаблона-->
+        {% endblock %}
+
+{% endblock %}
