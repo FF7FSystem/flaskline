@@ -110,7 +110,7 @@ def register():
         db.session.add(user) # Добавление в таблицу данных пользователь-мыло-пароль
         db.session.commit() # Сохранение данных в таблице
         print(colored('считывание полей из формы прошли успешно и записаны в таблицу User','yellow', attrs=['bold']))
-        flash('Поздравяем вы зарегались...Вас кинет на  строницу Логин ?')
+        flash('Поздравяем вы зарегались... Теперь вы можете войти под своим свеженьким аккаунтом')
         return redirect(url_for('login'))
     print(colored('Введеные данные в форму Регистрации не валидны, кидаем опять на страницу register.html','yellow', attrs=['bold']))
     return render_template('register.html', title='Register', form=form)
@@ -171,6 +171,17 @@ def table(): #
     table=[[ getattr(i,j) for j in inf_for_table['public']] for i in User.query.all()]
     for_thead=inf_for_table['public']
     service_tab=inf_for_table['service']
+
+    
+    #этот кривой кастыль сделан для того чтобы в итоговую таблицу на странице добавть стобец c номером записи, чтобы было видно что на текущий момент записе столько то... криво но быстро
+    #в сформированой выше таблице (список со списками) разварачивается каждая строка, дабавляется порядковый номер  в конец и разварачивается еще раз - способ добавления элемета в начало списка....бе...
+    # количество элементов (len  - таблицы )определяется при загрузке страници ? тут явно есть место для багов)))
+    for i in range(len(table)):
+            table[i].reverse()
+            table[i].append(i+1)
+            table[i].reverse()
+
+    
 
     return render_template( 'table.html', title='Таблица',table=table,for_thead=for_thead,service_tab=service_tab)
 

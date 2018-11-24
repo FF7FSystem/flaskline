@@ -10,6 +10,7 @@
         <caption><span class="glyphicon glyphicon-list"> </span> Таблица пользователей  </caption>
         <thead>
         	<tr class="active"> 
+        		<th> Номер  </th>
                 {% for row in for_thead %} 
                  	<th> {{ row }}  </th>
                 {% endfor %}
@@ -17,8 +18,9 @@
         </thead>
         <tbody>
         	
-            {% for col in table %}    
-               <tr>
+            {% for col in table %}  
+                <tr>
+                	
                 	{% for row in col %} 
                     	<td>{{ row }} </td>
                     {% endfor %}

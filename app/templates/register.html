@@ -21,8 +21,16 @@
             {{ wtf.form_field(form.email, placeholder="Электронная почта" )}}
             {{ wtf.form_field(form.password,placeholder="Пароль") }}
             {{ wtf.form_field(form.password2, placeholder="Повторите пароль") }}
+            
+            {{ form.recaptcha }}
+            {% for error in form.recaptcha.errors %}
+            <ul>
+                <li style  = "color:red;"> {{ error }} </li>
+            
+            {% endfor %}
             {{ wtf.form_field(form.submit) }}
              <button type="reset" class="btn btn-danger">Clear</button>
+            
 
          </div>
     </div> 

@@ -10,6 +10,9 @@ class Config(object):
 	print(colored('Запущен файл Конфига и создан класс Config','red', attrs=['bold']))
 
 	SECRET_KEY = os.environ.get('SECRET_KEY') or 'you not shell passadena'
+	RECAPTCHA_PUBLIC_KEY = '6LfoPHwUAAAAALTpRAfyeXamXQV75NyNl3I6_PRR'
+	RECAPTCHA_PRIVATE_KEY = '6LfoPHwUAAAAAM9iAoPMX4dyKvp7gjA4AY7ltIUX'
+
 	SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'app.db')
 	SQLALCHEMY_TRACK_MODIFICATIONS = False

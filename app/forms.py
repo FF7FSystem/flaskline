@@ -1,5 +1,5 @@
 from termcolor import colored
-from flask_wtf import FlaskForm
+from flask_wtf import FlaskForm, RecaptchaField
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, RadioField, SelectField
 from flask_wtf.file import FileField,FileRequired, FileAllowed
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length
@@ -10,6 +10,7 @@ class LoginForm(FlaskForm):
     username = StringField('User name', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember me')
+
     submit = SubmitField('Enter')
 
 
@@ -20,6 +21,7 @@ class RegistrationForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
+    recaptcha = RecaptchaField ()
     submit = SubmitField('Register')
     #Поле password2 проверяет валидность пароля и сравнивает с полем password с помощью функции EaulTo
 
